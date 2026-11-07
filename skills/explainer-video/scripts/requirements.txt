@@ -1,0 +1,4 @@
+kokoro-onnx==0.6.1
+soundfile==0.14.0
+mlx-whisper==0.4.3
+jiwer==4.0.0

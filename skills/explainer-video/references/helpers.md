@@ -7,7 +7,7 @@ python3.12 -m venv "$HOME/.cache/explainer-video/venv"
 "$HOME/.cache/explainer-video/venv/bin/pip" install -r /absolute/path/to/explainer-video/scripts/requirements.txt
 ```
 
-Write `sentences.json` as a JSON array of nonempty strings, one spoken sentence per entry. Spell numbers and abbreviations as they should be spoken. Keep the output directory outside the skill checkout.
+Write `sentences.json` as a JSON array of nonempty strings, one spoken sentence per entry. Each sentence is voiced separately with a pause after it, so link clauses with conjunctions rather than splitting them into fragments. Spell numbers and abbreviations as they should be spoken. Keep the output directory outside the skill checkout.
 
 ```sh
 "$HOME/.cache/explainer-video/venv/bin/python" /absolute/path/to/explainer-video/scripts/narrate.py sentences.json /absolute/path/to/output

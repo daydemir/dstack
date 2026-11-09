@@ -17,6 +17,6 @@ It writes `memo.m4a` (AAC, normalized to -16 LUFS, 0.35-second gap between sente
 
 The check uses local MLX Whisper (`mlx-community/whisper-large-v3-turbo`, downloaded if missing). It transcribes each sentence and the final `memo.m4a` without giving the recognizer the expected text, then compares word error rates. A rate above 10% for any sentence or for the whole memo, or a peak at or above 0 dB, flags review and exits nonzero. Inspect names and numbers even below that threshold, since a mismatch may be either a voicing problem or a recognizer error. Fix it by respelling or rephrasing, then rerun into a fresh directory. `--no-check` skips this step, but only use it when the user asked for speed over verification.
 
-The check measures transcription agreement and peak level. It cannot judge naturalness or prosody. Deniz approved the Heart 1.2x sample, so a changed voice needs a listening sample before claiming the same quality.
+The check measures transcription agreement and peak level. It cannot judge naturalness or prosody. The Heart 1.2x sample was approved by ear, so a changed voice needs a listening sample before claiming the same quality.
 
-Upstream references: [Kokoro ONNX setup and model files](https://github.com/thewh1teagle/kokoro-onnx), [MLX Whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper). Dependencies and model weights stay outside this repository. No fleet installation or sync is performed by this skill.
+Upstream references: [Kokoro ONNX setup and model files](https://github.com/thewh1teagle/kokoro-onnx), [MLX Whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper). Dependencies and model weights stay outside this repository.

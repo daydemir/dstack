@@ -24,6 +24,6 @@ After muxing, check the actual MP4 too. AAC encoding can introduce peak overshoo
 "$HOME/.cache/explainer-video/venv/bin/python" /absolute/path/to/explainer-video/scripts/check-audio.py /absolute/path/to/output/timing.json --audio /absolute/path/to/final.mp4
 ```
 
-This also compares final media duration with narration duration (0.5-second tolerance). The checker measures transcription agreement, peak level, and silence. It cannot judge naturalness, prosody, or whether the visuals teach well. Deniz approved the Heart 1.2x sample; a changed voice needs a listening sample before claiming the same quality.
+This also compares final media duration with narration duration (0.5-second tolerance). The checker measures transcription agreement, peak level, and silence. It cannot judge naturalness, prosody, or whether the visuals teach well. The Heart 1.2x sample was approved by ear; a changed voice needs a listening sample before claiming the same quality.
 
-Upstream references: [Kokoro ONNX setup and model files](https://github.com/thewh1teagle/kokoro-onnx), [MLX Whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper). Dependencies and model weights stay outside this repository. No fleet installation or sync is performed by this skill.
+Upstream references: [Kokoro ONNX setup and model files](https://github.com/thewh1teagle/kokoro-onnx), [MLX Whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper). Dependencies and model weights stay outside this repository.

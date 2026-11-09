@@ -3,67 +3,68 @@ name: climb
 description: "when user asks for a hill climb or climb, or if the user asks to do work towards some kind of measurable goal"
 ---
 
-Turn the user's goal into a bounded search: try changes, evaluate them, retain
-credible improvements, and present the best result when progress levels off.
+Turn the goal into a bounded search: try changes, evaluate them, keep credible
+improvements, and present the best result when progress levels off.
 
-## Shape the climb
+## Set up
 
-Inspect the target project's instructions, dashboards, metric definitions,
-existing evaluations, and tools before asking the user to explain them. Reuse
-established measurements and identify their coverage, attribution, and delay.
-Keep domain knowledge in the target project.
+Learn the project's existing metrics, evaluations, dashboards, and tools,
+including their coverage, attribution, and delay. Propose the objective,
+editable surface, evaluator, regression constraints, budget, and stopping rule.
+Use one primary metric with independent constraints, since a composite score can
+hide regressions. Ask only about consequential ambiguity. Spending, publishing,
+and changing external systems need authority beyond this skill.
 
-Propose the objective, editable surface, evaluator, regression constraints,
-resource budget, and stopping rule. Prefer one primary metric with independent
-constraints over a composite score that can hide regressions. Establish a
-baseline before changing anything. Resolve routine choices yourself; ask only
-for consequential ambiguity or authority that the existing request does not
-supply. Activating this skill does not expand permission to spend, publish, or
-change external systems.
+The evaluator is a blind, repeatable script measuring the actual outcome, with
+its inputs and scoring outside the editable surface. When a script cannot measure
+quality, propose a council of diverse model families within the allowed models
+and costs: pin the rubric and judge versions, anonymize candidates, vary their
+order, and retain every judgment and disagreement.
 
-Prefer a blind, repeatable script measuring the actual outcome. Keep its inputs
-and scoring rules outside the candidate's editable surface. If quality cannot
-be measured adequately that way, propose a council drawn from diverse available
-model families within the user's allowed models and costs. Pin the rubric and
-judge versions; anonymize candidates, vary presentation order, and retain
-individual judgments and disagreements. Use judgments as a proxy only when
-measured outcomes are unavailable; a persuasive proposal cannot replace observed
-performance. Keep final validation independent of the feedback used to search.
+Measure a baseline before changing anything.
 
-## Climb unattended
+## Run
 
-Once the setup is clear and authorized, run without routine human intervention.
-Choose the simplest execution method the environment supports. Persist enough
-state that a fresh agent can recover the objective, baseline, best candidate,
-failed approaches, resource use, and next experiment.
+Run unattended once authorized. Keep an experiment record that lets a fresh
+agent resume: objective, baseline, best candidate, next experiment, and for every
+attempt, including failures, the hypothesis, change, evidence, score, resource
+use, and keep/discard decision.
 
-For each experiment, record the hypothesis, change or artifact reference,
-evaluation evidence, score, resource use, and keep/discard decision. Compare
-against the current best under comparable conditions. Use repeated measurements
-or controlled experiments when noise, delayed outcomes, or changing conditions
-could create a false win. Keep changes that improve the objective while passing
-the constraints; restore the best candidate after failed attempts. Preserve the
-user's unrelated work and record failed experiments rather than erasing them.
+Compare each candidate with the current best under comparable conditions; scores
+from different metrics, evaluators, or observation windows are not comparable.
+Repeat measurements or use controls when noise, delay, or shifting conditions
+could create a false win. Keep changes that improve the objective and pass the
+constraints. Otherwise restore the best candidate, preserving unrelated work.
 
-Treat evaluator drift, missing telemetry, and exhausted resources as distinct
-from poor candidates. A proxy score or a tracking change must not manufacture a
-win. For live experiments, respect authorized budgets and allow outcomes to
-mature. Use a supported durable continuation when an observation window exceeds
-the current run; claim automatic follow-up only after that continuation exists.
+Record evaluator drift, missing telemetry, failed evaluations, and exhausted
+resources as blockers, with no score for the candidate. Only a measured outcome
+on the unchanged evaluator counts as a win; a council score is provisional. Let
+live outcomes mature, and create a durable continuation before promising
+follow-up beyond the current run.
 
-Stop at the declared target, plateau, or resource limit. A plateau means no
-credible improvement found within this search's scope and budget, not proof of a
-global optimum. Re-evaluate the best candidate independently before presenting
-it, distinguishing confirmed gains from provisional or inconclusive results.
+Stop at the target, plateau, or budget. A plateau means no credible improvement
+within this search's scope and budget.
 
-## Present and restart
+## Report
 
-Use a lab notebook and peak report as the default dashboard guidance. Read
-[references/dashboard.md](references/dashboard.md) when creating the climb's
-presentation; adapt it to the existing project rather than requiring a new app.
+Validate the best candidate on evidence the search never used. Separate confirmed
+gains from provisional and inconclusive results, and credit individual changes
+only when experiments isolate them.
 
-Present the best artifact, baseline comparison, validation, constraints checked,
-why the climb stopped, failed approaches worth remembering, and promising next
-hypotheses. Leave the result at the endpoint authorized by the user and the
-project's delivery rules. On restart, carry forward the evidence and lessons;
-version changed objectives or evaluators and establish a comparable baseline.
+Build both views from the experiment record, in the project's existing reporting
+surface or a lightweight local report.
+
+- **Lab notebook, during the search:** objective, metric direction and units,
+  baseline, best result, state, stopping rule, editable surface, and constraints.
+  Plot every attempt and best-so-far, marking retained, rejected, failed, and
+  maturing attempts by label or shape as well as color. Each attempt opens to its
+  record, plus repeat-run variation, individual council judges and agreement, or
+  live cohort dates, window, coverage, and pending measurements where they apply.
+- **Peak report, at the end:** baseline against best validated outcome with units
+  and uncertainty, why the climb stopped, links to the artifact and evidence,
+  retained changes, constraints checked, failed approaches, limitations, and next
+  hypotheses.
+
+Leave the result at the endpoint the user and project authorize. On restart,
+carry forward the evidence and lessons, version any changed objective or
+evaluator, and measure a comparable baseline.

@@ -19,6 +19,7 @@ Present this to the user and wait for their approval before climbing:
 - **Measure:** the number and exactly how it is calculated, or the council score
   and the exact prompt the judges receive.
 - **Goal:** the score to hit.
+- **Council models:** if using a council, ask the user which models should judge.
 
 ## Climb unattended
 

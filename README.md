@@ -2,6 +2,14 @@
 
 Deniz's skills and md files for agent work.
 
+## Shared skills
+
+Every folder in [`skills/`](skills/) is a skill that `darma sync` (from
+[darma-fleet](https://github.com/daydemir/darma-fleet)) links into `~/.agents`,
+`~/.claude` and `~/.codex` on each fleet computer. Skills vendored from other
+repos, and the local edits made to them, are listed in
+[`skills/VENDORED.md`](skills/VENDORED.md).
+
 ## Imported collections
 
 - [`tstack/`](tstack/): verbatim snapshot of [t3dotgg/tstack](https://github.com/t3dotgg/tstack) at commit [`1085050f3baed1ac724caa4a8166145fb2ac88af`](https://github.com/t3dotgg/tstack/commit/1085050f3baed1ac724caa4a8166145fb2ac88af), imported November 10, 2026. Includes all nine skills, supporting files, upstream README, and MIT license.

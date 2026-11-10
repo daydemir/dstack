@@ -2,6 +2,8 @@
 
 Darma owns the shared people/project/machine directory and commands. `darma whoami` shows this computer's role and project paths; `darma --help` covers setup, sync and doctor. Linear: `darma task --help`. Slack: `darma msg --help`. Runtime credential sources are documented in darma-fleet's README.
 
+To reach another fleet machine or resolve a nickname, run `darma hosts`; prefer its T3 linked environment for an agent there, SSH for a command.
+
 Dstack owns this file (`fleet/AGENTS.md`) and generic on-demand workflows (`skills/`); Darma delivers both when opted in. Use `diligence` for infrastructure improvements. Each project's home repo owns its AGENTS.md, CLI/runbook pointers, children and project skills. Hermes personas stay with their project/profile; Muavin owns Deniz's personal layer.
 
 ## Boundaries

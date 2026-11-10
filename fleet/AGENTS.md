@@ -4,7 +4,7 @@ Darma owns the shared people/project/machine directory and commands. `darma whoa
 
 To reach another fleet machine or resolve a nickname, run `darma hosts`; prefer its T3 linked environment for an agent there, SSH for a command.
 
-Browser or desktop UI work: use `computer-use-routing` to choose the target machine, session and tool.
+Browser or desktop UI work: read the linked `computer-use-routing/SKILL.md` in your harness's installed skills directory for target, session and tool selection.
 
 Dstack owns this file (`fleet/AGENTS.md`) and generic on-demand workflows (`skills/`); Darma delivers both when opted in. Use `diligence` for infrastructure improvements. Each project's home repo owns its AGENTS.md, CLI/runbook pointers, children and project skills. Hermes personas stay with their project/profile; Muavin owns Deniz's personal layer.
 

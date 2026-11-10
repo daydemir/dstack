@@ -30,3 +30,4 @@ These rules apply to agents on every fleet computer. `darma sync` links this fil
 - Read the target repo's instructions before working in it.
 - Use the `diligence` skill for systematic or infrastructure improvements.
 - Run `darma whoami` to see which computer this is and what belongs on it.
+- Shared Linear and Slack access: `darma task --help` and `darma msg --help`.

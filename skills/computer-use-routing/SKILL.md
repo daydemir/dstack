@@ -60,6 +60,8 @@ muavin cu --timeout-secs 90 '<bounded GUI task; use your own native computer-use
 This shared fallback is an explicit exception to Muavin's personal scope; it
 adds no authority or new access. It works from Claude, Hermes or reduced-tool
 agents. The worker uses its own native tools; never nest the executor.
+Over SSH, use the target's `~/.local/bin/muavin` with a safely quoted remote
+command; do not depend on its interactive PATH.
 
 Use `muavin cu --help`. If its default Codex path is missing, or a Node launcher
 fails under launchd's PATH, pass `--codex-bin <existing native Codex executable>`

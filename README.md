@@ -29,8 +29,8 @@ skills, protected Apple data and device signing/keychain. It remains installed
 on every Mac for now. Its existing `muavin cu` is the shared GUI fallback behind
 [`computer-use-routing`](skills/computer-use-routing/SKILL.md); native tools go
 first, with no new Darma GUI executor. Each project's home repo is also its T3
-project and Darma
-target; that home owns AGENTS.md, project skills, the project agent's soul/persona,
+project and Darma target; that home owns AGENTS.md, project skills, the project
+agent's soul/persona,
 child-repo verification and project jobs. Per-machine identity facts stay in
 Darma's host entry. Rolly is the MIX AI-employee role, potentially several agents;
 its mini is the Suelio MIX build/knowledge computer.

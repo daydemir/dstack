@@ -1,6 +1,6 @@
 ---
 name: computer-use-routing
-description: Choose the machine and tools for browser or desktop UI work, including remote Macs, human sign-in, and agents without native computer-use tools.
+description: Use first for browser or desktop UI tasks on fleet Macs, including remote machines and human sign-in, before backend-specific skills; choose the machine, native tool or shared fallback.
 ---
 
 # Computer-use routing

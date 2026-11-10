@@ -34,13 +34,52 @@ copy credentials or label one provider's reviews a completed council.
 
 ## Run and resolve
 
-Use the current harness's supported delegation route. Use native subagents for
-models on this provider when no extra settings or checkout are needed. In T3,
-use a new `delegate_task` for another provider, user-requested settings or a
-separate checkout, with model options under `target.options`. Every recheck uses
-a fresh reviewer. Follow a delegate's `next`: completion wakes the parent; end
-the turn when instructed and do not poll. Outside T3, if the available native
-interface cannot reach both providers, report the gap.
+### T3 sessions
+
+Use T3's own delegation: native subagents for this provider when no extra
+settings or checkout are needed; a new `delegate_task` for another provider,
+user-requested settings or a separate checkout, with options under
+`target.options`. Follow its `next`: completion wakes the parent; end the turn
+when instructed and do not poll. Do not switch to a CLI after a T3 auth failure.
+
+### Standalone Codex, Claude CLI and Hermes
+
+Use a fresh native peer when it can run the selected same-provider model.
+Run the other provider through the already-installed `agent-bridge`. The bridge
+may run both panel members when the native interface cannot select the requested model;
+the panel must still contain two providers and two independent review contexts.
+
+Read `agent-bridge --help` and `agent-bridge agents`; choose existing local
+aliases with model, auth and billing mode explicit. Default to subscription;
+use API billing or Fable only when the user explicitly chooses it. Honor other
+advertised opt-in restrictions. The portable `models` catalog alone does not
+establish that an alias or login works on this host.
+Write the bounded, exact-head/base/diff brief to a project-local file, then:
+
+```sh
+agent-bridge run --agent <existing-alias> --mode read \
+  --workdir <repo> --prompt <brief-file> --output <new-review-file>
+```
+
+Preserve the caller's execution boundary. `--mode read` is review intent, not a
+sandbox. Codex/Claude callers normally inherit their policy. A Hermes/plain-shell
+caller passes `--caller-policy external-sandbox` only inside an established
+external sandbox, or `--caller-policy unrestricted` only when its actual caller
+is already authorized unrestricted. A saved CLI config is not proof of the
+current terminal's boundary. If neither policy is established, use the blocked
+outcome below rather than asserting a boundary to make the command run.
+Wait for the process to finish (or one supported `agent-bridge wait` for a
+background run), then read its result and metadata. Use a fresh run/output for
+each independent review or recheck, not `resume` of the author or prior reviewer.
+
+If the bridge, a required local alias, working second-provider auth or an
+authorized execution boundary is unavailable, say **“council blocked: second
+provider unavailable here”**, give the concrete reason, and stop the council.
+Keep independent authorized work moving. Do not install/reconfigure the bridge,
+copy auth, change identities, or substitute one provider or the author's own
+assessment for the missing panel member. Report the actual aliases, models,
+providers and auth modes used; preserve existing bridge/Robin callers unchanged.
+Other harnesses without a supported delegation route report the same gap and stop.
 
 Give each reviewer the same scoped material and ask for findings, a score out
 of 10 and an approve/request-changes verdict. Reviewers start no children and

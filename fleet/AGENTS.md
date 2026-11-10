@@ -8,7 +8,7 @@ These rules apply to agents on every fleet computer. `darma sync` links this fil
 - Make routine, reversible decisions yourself. Ask only when authority, credentials, a human-only action, or a real judgment call from the user is missing.
 - A blocker stops only the steps that depend on it; keep going on independent work.
 - The first clear instruction authorizes its stated scope. Keep that authority through delegation, failures, and retries. Ask again only for a materially new permission, and say what changed. Respect cancellations and denials.
-- Repo code work is done when it is merged to the default branch and verified there, and its worktree is retired, unless the user asked for a review, a draft, or another endpoint. Run checks appropriate to the change.
+- Repo code work is done when it is merged to the default branch and verified there, and its task worktree (if any) is retired through T3 or plain Git, unless the user asked for a review, a draft, or another endpoint. Run checks appropriate to the change.
 - Be brief, direct, and friendly.
 
 ## Delegation

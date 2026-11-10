@@ -46,7 +46,8 @@ refreshing a skill from its source.
 ## TStack fleet adaptations
 
 The verbatim `tstack/` snapshot at t3dotgg/tstack@1085050f3baed1ac724caa4a8166145fb2ac88af
-is the provenance reference, with its MIT license at `tstack/LICENSE`. Runtime
+is the provenance reference. Its MIT notice at `tstack/LICENSE` also applies to
+these adapted copies. Runtime
 entry points live only under `skills/`; Darma installs those names once.
 
 | Skill | Fleet adaptation |

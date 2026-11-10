@@ -24,7 +24,9 @@ changes, destructive actions or human-only consent steps.
 Use the test methods already authorized for the task. Keep repository commands,
 fixtures, review gates and approval requirements. Resolve a genuine missing
 permission through the harness's question tool while continuing independent
-work; a workflow name does not override those boundaries.
+work; a workflow name does not override those boundaries. This task's own PR branch may be rebased and pushed with
+`--force-with-lease` tied to its observed remote head; other branches retain
+their existing authorization requirements.
 
 ## Steps
 

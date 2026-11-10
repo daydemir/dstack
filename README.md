@@ -19,6 +19,10 @@ dstack owns shared skill content and fleet rules. Darma handles setup, linking,
 and shared shell configuration, with no runtime services. Muavin remains
 installed fleet-wide for per-machine upkeep and the personal layer. MIX-specific
 services and jobs belong in mix-mono's `mix ops` or Rolly prompts and skills.
+MIX gate Xcode admission and storage preflight are owned by mix-mono. Worktrees
+use T3 and plain Git, with no fleet ownership service; the delivery rule in
+`fleet/AGENTS.md` governs retirement. Generic storage maintenance in Darma is
+deferred unless a second project needs it.
 
 ## Imported collections
 

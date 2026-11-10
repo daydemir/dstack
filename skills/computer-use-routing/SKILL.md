@@ -1,6 +1,6 @@
 ---
 name: computer-use-routing
-description: Use first for browser or native-app tasks on fleet Macs, before backend-specific computer-use skills; choose the machine, native tool or existing shared fallback.
+description: Use first for browser or desktop UI tasks on fleet Macs, including remote machines and human sign-in, before backend-specific skills; choose the machine, native tool or shared fallback.
 ---
 
 # Computer-use routing

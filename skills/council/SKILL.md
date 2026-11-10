@@ -45,14 +45,15 @@ when instructed and do not poll. Do not switch to a CLI after a T3 auth failure.
 ### Standalone Codex, Claude CLI and Hermes
 
 Use a fresh native peer when it can run the selected same-provider model.
-Run the other provider through the already-installed `agent-bridge`. It may run
-both panel members when the native interface cannot select the requested model;
+Run the other provider through the already-installed `agent-bridge`. The bridge
+may run both panel members when the native interface cannot select the requested model;
 the panel must still contain two providers and two independent review contexts.
 
 Read `agent-bridge --help` and `agent-bridge agents`; choose existing local
-aliases, respecting their advertised opt-in restrictions, with model, auth and
-billing mode explicit. The portable `models`
-catalog alone does not establish that an alias or login works on this host.
+aliases with model, auth and billing mode explicit. Default to subscription;
+use API billing or Fable only when the user explicitly chooses it. Honor other
+advertised opt-in restrictions. The portable `models` catalog alone does not
+establish that an alias or login works on this host.
 Write the bounded, exact-head/base/diff brief to a project-local file, then:
 
 ```sh
@@ -62,8 +63,11 @@ agent-bridge run --agent <existing-alias> --mode read \
 
 Preserve the caller's execution boundary. `--mode read` is review intent, not a
 sandbox. Codex/Claude callers normally inherit their policy. A Hermes/plain-shell
-caller must use only a policy already established for its actual terminal;
-never assert an external sandbox or unrestricted access merely to make it run.
+caller passes `--caller-policy external-sandbox` only inside an established
+external sandbox, or `--caller-policy unrestricted` only when its actual caller
+is already authorized unrestricted. A saved CLI config is not proof of the
+current terminal's boundary. If neither policy is established, use the blocked
+outcome below rather than asserting a boundary to make the command run.
 Wait for the process to finish (or one supported `agent-bridge wait` for a
 background run), then read its result and metadata. Use a fresh run/output for
 each independent review or recheck, not `resume` of the author or prior reviewer.
@@ -75,6 +79,7 @@ Keep independent authorized work moving. Do not install/reconfigure the bridge,
 copy auth, change identities, or substitute one provider or the author's own
 assessment for the missing panel member. Report the actual aliases, models,
 providers and auth modes used; preserve existing bridge/Robin callers unchanged.
+Other harnesses without a supported delegation route report the same gap and stop.
 
 Give each reviewer the same scoped material and ask for findings, a score out
 of 10 and an approve/request-changes verdict. Reviewers start no children and

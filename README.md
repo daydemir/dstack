@@ -12,8 +12,9 @@ repos, and the local edits made to them, are listed in
 
 [`fleet/AGENTS.md`](fleet/AGENTS.md) holds the fleet-wide agent rules. `darma sync`
 links it as `AGENTS.md` into each Claude and Codex home, including custom
-homes set in T3 Code. A computer opts out of skills and rules together with
-`darma dstack off`.
+homes set in T3 Code. New accounts start with dstack off. Choose
+`darma dstack on` followed by `darma sync` to install skills and rules;
+`darma dstack off` removes their managed links together.
 
 dstack owns generic skills and fleet rules shared across LLCs. Darma owns the
 people/project/machine directory, shared commands (including Linear and Slack),
@@ -52,7 +53,6 @@ snapshot stays unchanged. The entry point reads supporting skills from that
 snapshot, so existing installed versions of `how`, `tdd`, and other skills are
 left in place.
 
-To install the entry point for Codex, link this checkout's `skills/poteto-mode`
-folder into `~/.agents/skills/poteto-mode`. Keep the checkout available at that
-location. Invoke `$poteto-mode` with your task; it is explicit-only. Model-role
+With dstack enabled, `darma sync` installs the entry point alongside the other
+shared skills. Invoke `$poteto-mode` with your task; it is explicit-only. Model-role
 configuration is optional and is created only when you ask for `setup-pstack`.

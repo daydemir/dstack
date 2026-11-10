@@ -15,6 +15,11 @@ links it as `AGENTS.md` into each Claude and Codex home, including custom
 homes set in T3 Code. A computer opts out of skills and rules together with
 `darma dstack off`.
 
+dstack owns shared skill content and fleet rules. Darma handles setup, linking,
+and shared shell configuration, with no runtime services. Muavin remains
+installed fleet-wide for per-machine upkeep and the personal layer. MIX-specific
+services and jobs belong in mix-mono's `mix ops` or Rolly prompts and skills.
+
 ## Imported collections
 
 - [`tstack/`](tstack/): verbatim snapshot of [t3dotgg/tstack](https://github.com/t3dotgg/tstack) at commit [`1085050f3baed1ac724caa4a8166145fb2ac88af`](https://github.com/t3dotgg/tstack/commit/1085050f3baed1ac724caa4a8166145fb2ac88af), imported November 10, 2026. Includes all nine skills, supporting files, upstream README, and MIT license.

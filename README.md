@@ -24,6 +24,12 @@ use T3 and plain Git, with no fleet ownership service; the delivery rule in
 `fleet/AGENTS.md` governs retirement. Generic storage maintenance in Darma is
 deferred unless a second project needs it.
 
+Darma points to one repository per project; for MIX, `suelio-arts/mix` owns and
+checks its child repositories. Sync runs on demand, without a scheduled job.
+MIX coordination notes belong in that workspace's tracked `handoffs/` directory.
+Placement of generated MIX CLI skills is awaiting their usefulness audit; none
+are linked by Darma yet.
+
 ## Imported collections
 
 - [`tstack/`](tstack/): verbatim snapshot of [t3dotgg/tstack](https://github.com/t3dotgg/tstack) at commit [`1085050f3baed1ac724caa4a8166145fb2ac88af`](https://github.com/t3dotgg/tstack/commit/1085050f3baed1ac724caa4a8166145fb2ac88af), imported November 10, 2026. Includes all nine skills, supporting files, upstream README, and MIT license.

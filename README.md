@@ -15,14 +15,23 @@ links it as `AGENTS.md` into each Claude and Codex home, including custom
 homes set in T3 Code. A computer opts out of skills and rules together with
 `darma dstack off`.
 
-dstack owns shared skill content and fleet rules. Darma handles setup, linking,
-and shared shell configuration, with no runtime services. Muavin remains
-installed fleet-wide for per-machine upkeep and the personal layer. MIX-specific
-services and jobs belong in mix-mono's `mix ops` or Rolly prompts and skills.
-MIX gate Xcode admission and storage preflight are owned by mix-mono. Worktrees
-use T3 and plain Git, with no fleet ownership service; the delivery rule in
-`fleet/AGENTS.md` governs retirement. Generic storage maintenance in Darma is
-deferred unless a second project needs it.
+dstack owns generic skills and fleet rules shared across LLCs. Darma owns the
+people/project/machine directory, shared commands (including Linear and Slack),
+shared Hermes config, skill linking and shell setup. It runs no daemon; a future
+shared machine job can be a plain launchd unit from darma-fleet. Each is its own
+project.
+
+Muavin is Deniz's life-management project, including Mooney's soul, personal
+skills, protected Apple data and device signing/keychain. It remains installed
+on every Mac for now. Each project's home repo is also its T3 project and Darma
+target; that home owns AGENTS.md, project skills, the project agent's soul/persona,
+child-repo verification and project jobs. Per-machine identity facts stay in
+Darma's host entry. Rolly is the MIX AI-employee role, potentially several agents;
+its mini is the Suelio MIX build/knowledge computer.
+
+MIX gate Xcode admission/storage belongs to mix-mono. Worktrees use T3/plain Git,
+with no fleet ownership service; `fleet/AGENTS.md` governs retirement. Each later
+ownership move is a small PR with a check that the affected agent still starts.
 
 Darma points to one repository per project; for MIX, `suelio-arts/mix` owns and
 checks its child repositories. Sync runs on demand, without a scheduled job.

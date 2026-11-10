@@ -50,7 +50,8 @@ both panel members when the native interface cannot select the requested model;
 the panel must still contain two providers and two independent review contexts.
 
 Read `agent-bridge --help` and `agent-bridge agents`; choose existing local
-aliases, with their model, auth and billing mode explicit. The portable `models`
+aliases, respecting their advertised opt-in restrictions, with model, auth and
+billing mode explicit. The portable `models`
 catalog alone does not establish that an alias or login works on this host.
 Write the bounded, exact-head/base/diff brief to a project-local file, then:
 

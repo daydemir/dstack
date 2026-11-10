@@ -1,6 +1,6 @@
 # Fleet map
 
-Darma owns the shared people/project/machine directory and commands. `darma whoami` shows this computer's role and project paths; `darma --help` covers setup, sync and doctor. Linear: `darma task --help`. Slack: `darma msg --help`. Runtime credential sources are documented in darma-fleet's README.
+Darma owns the shared people/project/machine directory and commands. `darma whoami` shows this computer's role and project paths; `darma --help` covers setup, sync and doctor. Linear: `darma task --help`. Slack: `darma msg --help`. Runtime credential sources, including direct 1Password `op` use via the service-account token (`op whoami` misreports it), are documented in darma-fleet's README.
 
 To reach another fleet machine or resolve a nickname, run `darma hosts`; prefer its T3 linked environment for an agent there, SSH for a command.
 

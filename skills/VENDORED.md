@@ -42,3 +42,26 @@ refreshing a skill from its source.
 | `human-readable` | fleet-local (already versioned in setup/skills before this manifest existed) |  | 2026-08-11 | local edit: explicit-only document style workflow; preserve invocation policy on upstream refresh |
 | `html-plan` | Mooney's local ~/.agents/skills/html-plan |  | 2026-08-20 | local edit: description now fires standalone on plan-for-Deniz requests (the old wording referenced a nonexistent 'html' router) |
 | `impeccable` | Mooney's local ~/.claude/skills/impeccable reconciled with ~/.agents/skills/impeccable |  | 2026-08-20 | canonical = the .claude copy (richer frontmatter, /command spelling) plus the agents/ dir that only the .agents copy had; internal path references self-correct via the skill's own <skill-base-dir> instruction |
+
+## TStack fleet adaptations
+
+The verbatim `tstack/` snapshot at t3dotgg/tstack@1085050f3baed1ac724caa4a8166145fb2ac88af
+is the provenance reference. Its MIT notice at `tstack/LICENSE` also applies to
+these adapted copies. Runtime
+entry points live only under `skills/`; Darma installs those names once.
+
+| Skill | Fleet adaptation |
+|---|---|
+| `babysit-pr` | Upstream watcher and executable `scripts/pr-wait`; fleet/task delivery endpoint governs merging. |
+| `council` | Enabled-provider discovery, default two-provider panel, exact-head rechecks and reported identities; Astra only in explicitly selected special roles. |
+| `file-pr` | Upstream concise PR workflow. |
+| `full-send` | Fleet/task authority stays intact; no permission/review bypass; verify merge and retire its task worktree. |
+| `full-stop` | Explicit-only metadata and workflow request; emphasis never activates it; preserves fleet boundaries and the unmerged endpoint. |
+| `leaving-pr-comments` | Upstream attribution and comment scope. |
+| `modernize` | Upstream rebase/rework workflow with its existing authority limits. |
+| `sol-loop` | Enabled Sol selection, capability discovery once per thread, fresh independent rechecks. |
+| `takeover` | Upstream ownership and contributor-credit preservation. |
+
+`pstack/` remains the reference package behind `poteto-mode`. Its 58 leaves are
+not globally installed: existing tuned fleet names remain canonical, and the
+mode reaches its own pinned package as needed.

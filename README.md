@@ -10,6 +10,11 @@ Every folder in [`skills/`](skills/) is a skill that `darma sync` (from
 repos, and the local edits made to them, are listed in
 [`skills/VENDORED.md`](skills/VENDORED.md).
 
+[`fleet/AGENTS.md`](fleet/AGENTS.md) holds the fleet-wide agent rules. `darma sync`
+links it as `AGENTS.md` into each Claude and Codex home, including custom
+homes set in T3 Code. A computer opts out of skills and rules together with
+`darma dstack off`.
+
 ## Imported collections
 
 - [`tstack/`](tstack/): verbatim snapshot of [t3dotgg/tstack](https://github.com/t3dotgg/tstack) at commit [`1085050f3baed1ac724caa4a8166145fb2ac88af`](https://github.com/t3dotgg/tstack/commit/1085050f3baed1ac724caa4a8166145fb2ac88af), imported November 10, 2026. Includes all nine skills, supporting files, upstream README, and MIT license.

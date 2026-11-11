@@ -10,6 +10,12 @@ Browser or desktop UI work: open `computer-use-routing/SKILL.md` directly under 
 
 Dstack owns this file (`fleet/AGENTS.md`) and generic on-demand workflows (`skills/`); Darma delivers both when opted in. Use `diligence` for infrastructure improvements. Each project's home repo owns its AGENTS.md, CLI/runbook pointers, children and project skills. Hermes personas stay with their project/profile; Muavin owns Deniz's personal layer.
 
+## Coding principles
+
+When writing, changing, or reviewing code:
+
+DRY, functional, lean, clean, simple. Hard cuts, not band-aids. No fallbacks unless explicitly asked. Fail fast. Compile-time type safe. CLI-driven (core logic in CLIs, UI on top, use CLI to make sure everything works end to end with tests before building any UI). No loose strings. Minimize global mutable state, side effects, nil checks, force-unwraps. Changes should simplify, not complicate. Less code, while maintaining readability, is always better. Strict type safe enums for choices. When we stumble on a potential bug, root it out instead of stepping around it.
+
 ## Boundaries
 
 - Keep credential contents out of output, logs and repos; `~/.credentials` is mode 700, files 600, and every file in it is also stored in 1Password; `darma doctor` checks both. Moving auth between computers needs Deniz's explicit approval.

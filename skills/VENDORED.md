@@ -45,7 +45,7 @@ refreshing a skill from its source.
 
 ## TStack fleet adaptations
 
-The verbatim `tstack/` snapshot at t3dotgg/tstack@1085050f3baed1ac724caa4a8166145fb2ac88af
+The verbatim `tstack/` snapshot at t3dotgg/tstack@11e37a74d0a6868c121cd0910ab2b3bd9873b92a
 is the provenance reference. Its MIT notice at `tstack/LICENSE` also applies to
 these adapted copies. Runtime
 entry points live only under `skills/`; Darma installs those names once.
@@ -53,13 +53,13 @@ entry points live only under `skills/`; Darma installs those names once.
 | Skill | Fleet adaptation |
 |---|---|
 | `babysit-pr` | Upstream watcher and executable `scripts/pr-wait`; fleet/task delivery endpoint governs merging. |
-| `council` | Enabled-provider discovery, default two-provider panel, exact-head rechecks and reported identities; Astra only in explicitly selected special roles. |
+| `council` | Enabled-provider discovery, default two-provider panel, exact-head rechecks and reported identities; Astra only in explicitly selected special roles; briefs carry the user's request verbatim and treat missing context as a finding. |
 | `file-pr` | Upstream concise PR workflow. |
-| `full-send` | Fleet/task authority stays intact; no permission/review bypass; verify merge and retire its task worktree. |
+| `full-send` | Fleet/task authority stays intact; no permission/review bypass; plan review first when the fleet map requires it; verify merge and retire its task worktree. |
 | `full-stop` | Explicit-only metadata and workflow request; emphasis never activates it; preserves fleet boundaries and the unmerged endpoint. |
 | `leaving-pr-comments` | Upstream attribution and comment scope. |
 | `modernize` | Upstream rebase/rework workflow with its existing authority limits. |
-| `sol-loop` | Enabled Sol selection, capability discovery once per thread, fresh independent rechecks. |
+| `sol-loop` | Enabled Sol selection, capability discovery once per thread, fresh independent rechecks; briefs carry the user's request verbatim and treat missing context as a finding. |
 | `takeover` | Upstream ownership and contributor-credit preservation. |
 
 `pstack/` remains the reference package behind `poteto-mode`. Its 58 leaves are

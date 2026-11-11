@@ -39,8 +39,9 @@ Find the base after `git fetch origin`:
   the user names, or `HEAD` for uncommitted changes only.
 
 The change is base to working tree in those paths, with untracked files.
-Use one diff command all rounds. State intent and out-of-scope in 1-2
-sentences. Run covering checks. Do not send code this change breaks. Note
+Use one diff command all rounds. Copy the user's request word for word,
+including later corrections; your summary does not replace it. State your
+reading of it and out-of-scope in 1-2 sentences. Run covering checks. Do not send code this change breaks. Note
 missing or pre-failing checks in the brief.
 
 ## 2. Start Sol
@@ -69,9 +70,14 @@ Round 1 brief (T3 children get no history):
 
 ```
 Review only. Do not edit, commit, push, comment on PRs, or start subagents.
-Repo: <abs path> Base: <sha> Intent: <intent> Out of scope: <scope> Checks: <results>
+Repo: <abs path> Base: <sha> Checks: <results>
+Request (user's words): <verbatim>
+Author's reading: <intent> Out of scope: <scope>
 See: git diff <base> [-- <paths>]; git status --short (read untracked).
-Read surrounding code. Find bugs, broken callers, mismatch with intent.
+Read surrounding code. Find bugs, broken callers, mismatch with the
+request, and places where the author's reading differs from it. If you
+cannot judge something without context this brief lacks, report the
+missing context as a should.
 Skip style unless it hides a bug. Hold to the smallest change. Flag code,
 tests, or guards the intent does not need. Other paths, rare cases, small
 perf, extra compat: nits.

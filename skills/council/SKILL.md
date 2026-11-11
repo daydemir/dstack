@@ -6,8 +6,11 @@ description: Get independent model reviews when the user requests a council.
 # Council
 
 Fix known issues and outstanding PR findings, then run the relevant checks before
-review. Give reviewers the updated diff and a bounded brief: intent, exact head
-and base, checks, exclusions and open findings. Reviews are read-only.
+review. Give reviewers the updated diff and a bounded brief: the user's request word
+for word (including later corrections), your reading of it, exact head and
+base, checks, exclusions and open findings. Reviews are read-only. Ask
+reviewers to flag where your reading differs from the request, and to report
+any context they need but the brief lacks as a finding.
 
 ## Select the panel
 
@@ -85,6 +88,12 @@ Give each reviewer the same scoped material and ask for findings, a score out
 of 10 and an approve/request-changes verdict. Reviewers start no children and
 never watch the PR. Record the model and provider the harness reports; label
 unverified identity or missing scores rather than guessing.
+
+Do not wait idle. When a result arrives, check its findings against the code
+at once and decide what to fix while the other reviewers run. Do not edit
+files while a reviewer still reviews the same checkout. If the user's
+instructions mark a reviewer as non-blocking, do not wait for it; treat a
+late result as feedback and do not record its score.
 
 Check findings against the actual code. Apply material fixes yourself, prove
 them, and request a fresh review of the changed head. Keep later rounds focused

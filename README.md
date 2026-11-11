@@ -12,7 +12,8 @@ profile, soul and stock skills stay in place. Skills vendored from other
 repos, and the local edits made to them, are listed in
 [`skills/VENDORED.md`](skills/VENDORED.md).
 
-[`fleet/AGENTS.md`](fleet/AGENTS.md) holds the fleet-wide agent rules. `darma sync`
+[`fleet/AGENTS.md`](fleet/AGENTS.md) holds the fleet-wide agent rules.
+Standing coding principles live there; skills remain on-demand workflows. `darma sync`
 links it as `AGENTS.md` into each Claude and Codex home, including custom
 homes set in T3 Code. New accounts start with dstack off. Choose
 `darma dstack on` followed by `darma sync` to install skills and rules;

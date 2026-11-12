@@ -32,7 +32,7 @@ category. Outside the fleet, symlink the same folders by hand.
 
 - [`tstack/`](tstack/): verbatim snapshot of [t3dotgg/tstack](https://github.com/t3dotgg/tstack) at commit [`11e37a74d0a6868c121cd0910ab2b3bd9873b92a`](https://github.com/t3dotgg/tstack/commit/11e37a74d0a6868c121cd0910ab2b3bd9873b92a), imported November 10, 2026; refreshed November 11, 2026. Includes all nine skills, supporting files, upstream README, and MIT license.
 - [`pstack/`](pstack/): verbatim snapshot of [cursor/plugins/pstack](https://github.com/cursor/plugins/tree/main/pstack) at commit [`de8ee15dd1194627d21eb5fcd41cb1873208dabb`](https://github.com/cursor/plugins/commit/de8ee15dd1194627d21eb5fcd41cb1873208dabb), imported November 10, 2026. Includes all 58 skills and the complete upstream package, including agents, playbooks, docs, assets, automations, and MIT license. Importing the automation files does not enable them.
-- [`mattpocock/`](mattpocock/): [mattpocock/skills](https://github.com/mattpocock/skills) as a squashed `git subtree`. A weekly workflow opens a PR when upstream changes; refresh by hand with `git subtree pull --prefix=mattpocock https://github.com/mattpocock/skills.git main --squash`. Edit adaptations in `skills/`, not here.
+- [`mattpocock/`](mattpocock/): [mattpocock/skills](https://github.com/mattpocock/skills) as a squashed `git subtree`. A daily workflow pulls upstream changes straight into `main`; refresh by hand with `git subtree pull --prefix=mattpocock https://github.com/mattpocock/skills.git main --squash`. Edit adaptations in `skills/`, not here.
 
 ## TStack workflows
 

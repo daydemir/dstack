@@ -45,9 +45,10 @@ refreshing a skill from its source.
 
 ## TStack fleet adaptations
 
-The verbatim `tstack/` snapshot at t3dotgg/tstack@11e37a74d0a6868c121cd0910ab2b3bd9873b92a
-is the provenance reference. Its MIT notice at `tstack/LICENSE` also applies to
-these adapted copies. Runtime
+Adapted from t3dotgg/tstack@11e37a74d0a6868c121cd0910ab2b3bd9873b92a, the
+provenance reference (darma offers upstream itself as the `tstack` source). Its
+MIT notice, kept at `licenses/tstack-LICENSE`, also applies to these adapted
+copies. Runtime
 entry points live only under `skills/`; Darma installs those names once.
 
 | Skill | Fleet adaptation |
@@ -62,6 +63,6 @@ entry points live only under `skills/`; Darma installs those names once.
 | `sol-loop` | Enabled Sol selection, capability discovery once per thread, fresh independent rechecks; briefs carry the user's request verbatim and treat missing context as a finding. |
 | `takeover` | Upstream ownership and contributor-credit preservation. |
 
-`pstack/` remains the reference package behind `poteto-mode`. Its 58 leaves are
-not globally installed: existing tuned fleet names remain canonical, and the
-mode reaches its own pinned package as needed.
+`poteto-mode` reads the pstack package from darma's pinned `pstack` source
+checkout. Its leaves are not linked unless an account takes that source, which
+names them `pstack-NAME`; the tuned fleet names here remain unprefixed.

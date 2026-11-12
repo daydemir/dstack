@@ -5,9 +5,11 @@ description: Run PStack's engineering playbooks when the user explicitly request
 
 # Poteto mode in T3 Code
 
-Resolve this file's real path through any installation symlink. The dstack
-checkout is two directories above its containing folder; its `pstack/` folder
-is the upstream package, referred to below as `<pstack>`.
+The upstream package, referred to below as `<pstack>`, is the `pstack/` folder
+of darma's checkout of cursor/plugins: `~/.darma/sources/pstack/pstack`, pinned
+when the account takes the `pstack` source (`darma stack` clones it otherwise).
+Outside darma, use the `pstack/` folder of a cursor/plugins clone. Stop and say
+so if neither exists.
 
 1. Read [the T3/Codex adapter](references/t3.md).
 2. Read `<pstack>/skills/poteto-mode/SKILL.md` in full and run its matching
@@ -16,5 +18,5 @@ is the upstream package, referred to below as `<pstack>`.
 Resolve supporting skills, playbooks, agents, and references within `<pstack>`,
 even when a skill with the same name is installed elsewhere. Give delegates
 the absolute package and adapter paths. Read principle leaves as the upstream
-mode requires. Keep the imported package verbatim; local integration changes
-belong in this entry point and its references.
+mode requires. Never edit the package; local integration changes belong in this entry point
+and its references.

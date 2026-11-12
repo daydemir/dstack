@@ -1,14 +1,14 @@
-# Fleet map
+# User instructions
 
-Darma owns the shared people/project/machine directory and commands. `darma whoami` shows this computer's role and project paths; `darma --help` covers setup, sync and doctor. Linear: `darma task --help`. Slack: `darma msg --help`. Runtime credential sources, including direct 1Password `op` use via the service-account token (`op whoami` misreports it), are documented in darma-fleet's README.
+Loaded automatically at session start: Deniz's user-level AGENTS.md from dstack, linked into each agent home by darma. The user did not paste it.
 
-To reach another fleet machine or resolve a nickname, run `darma hosts`; prefer its T3 linked environment for an agent there, SSH for a command.
+Instructions live in AGENTS.md files: this one for every session, a project's home repo AGENTS.md for that project, and a repo's own AGENTS.md for its code. Every CLAUDE.md is only `@AGENTS.md`; edit the AGENTS.md. Skills are on-demand workflows; dstack's generic skills are linked here, and project skills live in each repo's `.agents/skills/` (with `.claude/skills` linked to it).
 
-When deciding to use subagents in T3, run `darma models` to guide your choice of model and effort.
+## Fleet
 
-Browser or desktop UI work: open `computer-use-routing/SKILL.md` directly under your installed skills directory, following its symlink, for target, session and tool selection.
+`darma whoami` shows this computer's role and project paths; `darma --help` covers setup, stack choices, sync and doctor. Linear: `darma task --help`. Slack: `darma msg --help`. Runtime credential sources, including direct 1Password `op` use via the service-account token (`op whoami` misreports it), are documented in darma-fleet's README. To reach another fleet machine or resolve a nickname, run `darma hosts`; prefer its T3 linked environment for an agent there, SSH for a command.
 
-Dstack owns this file (`fleet/AGENTS.md`) and generic on-demand workflows (`skills/`); Darma delivers both when opted in. Use `diligence` for infrastructure improvements. Each project's home repo owns its AGENTS.md, CLI/runbook pointers, children and project skills. Hermes personas stay with their project/profile; Muavin owns Deniz's personal layer.
+Before choosing a subagent's model or effort, read the `choosing-models` skill. Browser or desktop UI work: open `computer-use-routing/SKILL.md` directly under your installed skills directory, following its symlink, for target, session and tool selection. Use `diligence` for infrastructure improvements.
 
 ## Coding principles
 

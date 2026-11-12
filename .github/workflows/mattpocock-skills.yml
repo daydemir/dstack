@@ -2,12 +2,11 @@ name: Update mattpocock skills
 
 on:
   schedule:
-    - cron: "0 9 * * 1"
+    - cron: "0 9 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   update:
@@ -20,8 +19,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git subtree pull --prefix=mattpocock https://github.com/mattpocock/skills.git main --squash -m "Update mattpocock/skills subtree"
-      - uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
-        with:
-          branch: update/mattpocock-skills
-          title: Update mattpocock/skills subtree
-          body: Weekly `git subtree pull` of https://github.com/mattpocock/skills.
+          git push origin HEAD:main

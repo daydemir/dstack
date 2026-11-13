@@ -9,8 +9,8 @@ Pick the cheapest model whose intelligence and taste fit the task, then the firs
 
 | Model | Intelligence | Taste | Cost (0 = cheap) | Notes |
 |---|---:|---:|---:|---|
-| Fable 5.2 | 10 | 9.5 | 10 | Only needed above Opus 5.5 for more taste or a strategic thinker. Efforts: high, medium, low. |
-| Opus 5.5 | 9 | 9 | 8 | Preferred daily driver for strategic thinking and coding. Efforts: xhigh, high, medium. |
+| Fable 5.2 | 10 | 9.5 | 10 | Only needed above Opus 5.5 for more taste or a strategic thinker. For work that needs taste and doesn't have a clear right answer; when we need creativity, intuition, or gut calls; to help land changes that have been spinning a while. Efforts: high, medium, low. |
+| Opus 5.5 | 9 | 9 | 8 | Preferred daily driver for strategic thinking and coding. Thorough and diligent, great for work that's measurable and concrete; not the most adversarial, should be told to push back and express if it has a better idea. Efforts: high, xhigh, medium. |
 | Astra 6 | 8 | 8 | 9 | High-level thinker with decent taste but expensive. Bring in only for a council or discussion that pits the best taste and strategic thinkers against each other. Efforts: xhigh, high, medium. |
 | Gemini 4 Carbon | 8 | 6 | 8 | Web design, code review and taste help. Efforts: medium, high. |
 | Sol 6.1 | 7.5 | 5.5 | 5 | Thorough code reviewer, solid code writer, overall workhorse. Efforts: xhigh, high, medium. |

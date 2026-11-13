@@ -48,40 +48,34 @@ when instructed and do not poll. Do not switch to a CLI after a T3 auth failure.
 ### Standalone Codex, Claude CLI and Hermes
 
 Use a fresh native peer when it can run the selected same-provider model.
-Run the other provider through the already-installed `agent-bridge`. The bridge
-may run both panel members when the native interface cannot select the requested model;
-the panel must still contain two providers and two independent review contexts.
+Run the other provider with `darma t3 run`: one tool-free read on that
+provider's T3 subscription account. It may run both panel members when the
+native interface cannot select the requested model; the panel must still contain
+two providers and two independent review contexts.
 
-Read `agent-bridge --help` and `agent-bridge agents`; choose existing local
-aliases with model, auth and billing mode explicit. Default to subscription;
-use API billing or Fable only when the user explicitly chooses it. Honor other
-advertised opt-in restrictions. The portable `models` catalog alone does not
-establish that an alias or login works on this host.
-Write the bounded, exact-head/base/diff brief to a project-local file, then:
+Read `darma t3 run --help`. Pick the T3 instance (`codex`, `claudeAgent`) and a
+model its catalog offers; Fable only when the user explicitly chooses it. darma
+is subscription-only and refuses API billing. A tool-free reviewer sees only its
+prompt, so write one prompt file outside the repo holding the whole bounded brief
+and the exact diff (`git diff <base>...<head>`), plus any file contents the review
+needs, then:
 
 ```sh
-agent-bridge run --agent <existing-alias> --mode read \
-  --workdir <repo> --prompt <brief-file> --output <new-review-file>
+darma t3 run --instance <codex|claudeAgent> --model <slug> --effort high \
+  --prompt <brief-and-diff-file> --workdir <repo> --timeout 1800
 ```
 
-Preserve the caller's execution boundary. `--mode read` is review intent, not a
-sandbox. Codex/Claude callers normally inherit their policy. A Hermes/plain-shell
-caller passes `--caller-policy external-sandbox` only inside an established
-external sandbox, or `--caller-policy unrestricted` only when its actual caller
-is already authorized unrestricted. A saved CLI config is not proof of the
-current terminal's boundary. If neither policy is established, use the blocked
-outcome below rather than asserting a boundary to make the command run.
-Wait for the process to finish (or one supported `agent-bridge wait` for a
-background run), then read its result and metadata. Use a fresh run/output for
-each independent review or recheck, not `resume` of the author or prior reviewer.
+It prints `{"result": PATH}`; PATH and `PATH.meta.json` (provider, model,
+session) are temporary, so read them at once. Exit 1 with
+`ROBIN_SUBSCRIPTION_LIMIT:<provider>:<kind>` is a usage limit; exit 2 is any
+other failure. Use a fresh run for each independent review or recheck.
 
-If the bridge, a required local alias, working second-provider auth or an
-authorized execution boundary is unavailable, say **“council blocked: second
-provider unavailable here”**, give the concrete reason, and stop the council.
-Keep independent authorized work moving. Do not install/reconfigure the bridge,
-copy auth, change identities, or substitute one provider or the author's own
-assessment for the missing panel member. Report the actual aliases, models,
-providers and auth modes used; preserve existing bridge/Robin callers unchanged.
+If `darma t3 run`, the second provider's T3 instance or its subscription login is
+unavailable, say **“council blocked: second provider unavailable here”**, give
+the concrete reason, and stop the council. Keep independent authorized work
+moving. Leave T3, darma and logins as they are, and keep the panel to two real
+providers: the author's own assessment is not a member. Report the actual
+instances, models and providers used.
 Other harnesses without a supported delegation route report the same gap and stop.
 
 Give each reviewer the same scoped material and ask for findings, a score out

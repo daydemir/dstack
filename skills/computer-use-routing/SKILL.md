@@ -54,7 +54,7 @@ does not establish availability in this agent.
 Use the existing signed shell executor on the **target Mac**:
 
 ```sh
-muavin cu --timeout-secs 90 '<bounded GUI task; use your own native computer-use tool directly; do not call muavin cu or agent-bridge>'
+muavin cu --timeout-secs 90 '<bounded GUI task; use your own native computer-use tool directly; do not call muavin cu>'
 ```
 
 This shared fallback is an explicit exception to Muavin's personal scope; it

@@ -51,30 +51,33 @@ does not establish availability in this agent.
 
 ## 4. No native tool for the required GUI operation
 
-Use the existing signed shell executor on the **target Mac**:
+Use darma's bounded fallback on the **target Mac**:
 
 ```sh
-muavin cu --timeout-secs 90 '<bounded GUI task; use your own native computer-use tool directly; do not call muavin cu>'
+darma cu --timeout-secs 90 '<bounded GUI task; use your own native computer-use tool directly; do not call darma cu>'
 ```
 
-This shared fallback is an explicit exception to Muavin's personal scope; it
-adds no authority or new access. It works from Claude, Hermes or reduced-tool
-agents. The worker uses its own native tools; never nest the executor.
-Over SSH, use the target's `~/.local/bin/muavin` with a safely quoted remote
-command; do not depend on its interactive PATH.
+It runs Codex's computer-use plugin in that Mac's logged-in GUI session and works
+from Claude, Hermes, SSH or reduced-tool agents. It adds no authority or access.
+The worker uses its own native tools; never nest the fallback. Over SSH, use the
+target's `~/.local/bin/darma cu` with a safely quoted remote command; do not
+depend on its interactive PATH. `muavin cu` is retired; do not use it.
 
-Use `muavin cu --help`. If its default Codex path is missing, or a Node launcher
-fails under launchd's PATH, pass `--codex-bin <existing native Codex executable>`
-from that installed package. Do not install a workaround or change the runtime.
+Use `darma cu --help`; if `cu` is an unknown command, that Mac's darma predates
+it, so run `darma update` there. If the default `~/.local/bin/codex` is missing
+or is a Node launcher that fails under launchd's PATH, pass `--codex-bin
+<existing native Codex executable>` from that installed package. Do not install
+a workaround or change the runtime. A run's logs are in the
+`$TMPDIR/darma-cu-<id>` it prints.
 
 Verify the actual window/result with the tool's returned state or screenshot.
-`muavin desktop computer-use-status` is read-only diagnostics, not proof of
-granted screen/app access. Report exact denied-access, locked-console or runtime
-errors; a pipe/window failure alone is not a permission diagnosis. Runtime
-repairs belong to their owning CLI/runbook and the task's existing authority.
-Preserve existing windows; close only your disposable tabs, keeping requested
-handoff windows open.
+Report exact denied-access, locked-console or runtime errors. The native helper's
+app binding sometimes returns AppleEvent timeout `-1712`; retry once, then report
+it verbatim. A pipe, window or AppleEvent failure alone is not a permission
+diagnosis. Runtime repairs belong to their owning CLI/runbook and the task's
+existing authority. Preserve existing windows; close only your disposable tabs,
+keeping requested handoff windows open.
 
 Claude's tool discovery: [computer use](https://code.claude.com/docs/en/computer-use),
 [Chrome](https://code.claude.com/docs/en/chrome). Session tool documentation governs
-the actual API; no new Darma command or GUI binary is needed.
+the actual API.

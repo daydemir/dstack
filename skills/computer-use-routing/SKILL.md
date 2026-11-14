@@ -32,10 +32,12 @@ interaction needs tools on that Mac or the bounded remote fallback below.
 
 Finish without a person at the screen:
 
-- **Sign in yourself.** Take the site's login from 1Password (service-account
-  token per darma-fleet's README; match items by URL or title), one-time code
-  included (`op item get ID --otp`), and type it straight into the site. Never
-  write a secret into messages, files or logs.
+- **Sign in yourself** from 1Password (service-account token per darma-fleet's
+  README; match items by URL or title), one-time code included. Move each secret
+  through the clipboard so it never reaches your context or logs: `op item get ID
+  --vault VAULT --fields password --reveal | pbcopy` (or `--otp`), paste it into
+  the field, then `pbcopy < /dev/null`. Never print a secret or type it out.
+  A login the service account can't see is Deniz's to add to its vaults.
 - **Restart what you automate** (the browser or app) when it stops responding;
   session restore keeps its windows.
 - **Raise no dialogs.** A command that can prompt for a password or consent on
@@ -43,10 +45,14 @@ Finish without a person at the screen:
   every agent behind it; pass the stored secret non-interactively or skip it.
 - **A pause names its own test.** Record what clears it; the next run re-tests
   that and resumes on its own instead of waiting for a person.
-- **Only what no agent can do goes to Deniz:** macOS permission grants (System
-  Settings, TCC), a passkey or device the fleet doesn't hold, a check you
-  couldn't pass after trying. Message him at once with `darma msg`, saying what
-  to do and where, rather than leaving it for a check-in.
+- **Retry by state, not blindly.** Before rerunning screen work, check what the
+  last run already did and do only what's unfinished, so a purchase or submit
+  never happens twice.
+- **When something needs Deniz** (what no agent can do, such as a macOS
+  permission grant, a passkey or device the fleet doesn't hold, or a check you
+  couldn't pass after trying; or what his boundaries reserve to him), message
+  him at once with `darma msg`, saying exactly what to do and where, rather than
+  leaving it for a check-in.
 
 ## 4. Which tool
 
@@ -77,7 +83,8 @@ darma cu --timeout-secs 90 '<bounded GUI task>'
 It runs Codex's computer-use plugin in that Mac's logged-in GUI session and works
 from Claude, Hermes, SSH or reduced-tool agents. Tasks run one at a time per
 Mac, and darma appends a standing brief carrying section 3 to the worker, so
-don't repeat it. Over SSH, use the
+don't repeat it. The queue covers `darma cu` callers only; on a screen other
+agents drive through `darma cu`, use it too rather than your native tool. Over SSH, use the
 target's `~/.local/bin/darma cu` with a safely quoted remote command; do not
 depend on its interactive PATH. `muavin cu` is retired; do not use it.
 
@@ -88,9 +95,9 @@ or is a Node launcher that fails under launchd's PATH, pass `--codex-bin
 a workaround or change the runtime. A run's logs are in the
 `$TMPDIR/darma-cu-<id>` it prints.
 
-Branch on its exit code: 0 done; 2 failed; 3 runtime fault, already retried once
-(the helper's AppleEvent `-1712` or a busy screen), so try again later; 4 needs a
-human, with the reason after `cu: needs a human:` on stderr, so message Deniz as
+Branch on its exit code: 0 done; 2 failed; 3 runtime fault (the helper's
+AppleEvent `-1712`, or a busy screen), so retry once later by state as in
+section 3; 4 needs a human, with the reason after `cu: needs a human:` on stderr, so message Deniz as
 in section 3. A pipe, window or AppleEvent failure alone is not a permission
 diagnosis. Verify the actual window/result from the worker's report. Preserve
 existing windows; close only your disposable tabs.

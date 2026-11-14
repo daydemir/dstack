@@ -63,10 +63,12 @@ The worker uses its own native tools; never nest the fallback. Over SSH, use the
 target's `~/.local/bin/darma cu` with a safely quoted remote command; do not
 depend on its interactive PATH. `muavin cu` is retired; do not use it.
 
-Use `darma cu --help`; if `cu` is an unknown command, that Mac's darma predates it, so
-run `darma update` there. If the default `~/.local/bin/codex` is missing, pass
-`--codex-bin <existing native Codex executable>`. Do not install a workaround or
-change the runtime. A run's logs are in the `$TMPDIR/darma-cu-<id>` it prints.
+Use `darma cu --help`; if `cu` is an unknown command, that Mac's darma predates
+it, so run `darma update` there. If the default `~/.local/bin/codex` is missing
+or is a Node launcher that fails under launchd's PATH, pass `--codex-bin
+<existing native Codex executable>` from that installed package. Do not install
+a workaround or change the runtime. A run's logs are in the
+`$TMPDIR/darma-cu-<id>` it prints.
 
 Verify the actual window/result with the tool's returned state or screenshot.
 Report exact denied-access, locked-console or runtime errors. The native helper's

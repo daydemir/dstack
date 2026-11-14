@@ -1,6 +1,6 @@
 ---
 name: computer-use-routing
-description: Use first for browser or desktop UI tasks on fleet Macs, including remote machines and human sign-in, before backend-specific skills; choose the machine, native tool or shared fallback.
+description: Use first for browser or desktop UI tasks on fleet Macs, including remote machines and signing in, before backend-specific skills; choose the machine, native tool or shared fallback.
 ---
 
 # Computer-use routing
@@ -25,13 +25,36 @@ interaction needs tools on that Mac or the bounded remote fallback below.
 |---|---|
 | Read public information without a requested browser interaction | Fetch/search or a purpose-built connector; no browser needed. |
 | Click through a site where an isolated session is sufficient | The harness's supported browser/preview tool. |
-| Use a signed-in session, prepare human login/2FA, or open a requested real browser window | A visible browser in that Mac's GUI session, preserving the requested/existing browser. A preview or isolated tab does not satisfy this. |
+| Use a signed-in session, sign in, or open a requested real browser window | A visible browser in that Mac's GUI session, preserving the requested/existing browser. A preview or isolated tab does not satisfy this. |
 | Operate a native app | Native computer use for that Mac. |
 
-Let the human enter passwords, passkeys and 2FA on that screen. Leave a requested
-login window open for them. System Settings, TCC and consent grants are human-only.
+## 3. Run unattended
 
-## 3. Which tool
+Finish without a person at the screen:
+
+- **Sign in yourself** from 1Password (service-account token per darma-fleet's
+  README; match items by URL or title), one-time code included. Move each secret
+  through the clipboard so it never reaches your context or logs: `op item get ID
+  --vault VAULT --fields password --reveal | pbcopy` (or `--otp`), paste it into
+  the field, then `pbcopy < /dev/null`. Never print a secret or type it out.
+  A login the service account can't see is Deniz's to add to its vaults.
+- **Restart what you automate** (the browser or app) when it stops responding;
+  session restore keeps its windows.
+- **Raise no dialogs.** A command that can prompt for a password or consent on
+  the screen (for example `security` on a locked keychain without `-p`) blocks
+  every agent behind it; pass the stored secret non-interactively or skip it.
+- **A pause names its own test.** Record what clears it; the next run re-tests
+  that and resumes on its own instead of waiting for a person.
+- **Retry by state, not blindly.** Before rerunning screen work, check what the
+  last run already did and do only what's unfinished, so a purchase or submit
+  never happens twice.
+- **When something needs Deniz** (what no agent can do, such as a macOS
+  permission grant, a passkey or device the fleet doesn't hold, or a check you
+  couldn't pass after trying; or what his boundaries reserve to him), message
+  him at once with `darma msg`, saying exactly what to do and where, rather than
+  leaving it for a check-in.
+
+## 4. Which tool
 
 Inspect this session's actual tools (including `ToolSearch` where provided),
 then read their first-use documentation. A model name or a parent's tool list
@@ -49,17 +72,19 @@ does not establish availability in this agent.
   available web extraction/search tools. A dedicated API/CLI wins when it
   provides the exact requested operation.
 
-## 4. No native tool for the required GUI operation
+## 5. No native tool for the required GUI operation
 
 Use darma's bounded fallback on the **target Mac**:
 
 ```sh
-darma cu --timeout-secs 90 '<bounded GUI task; use your own native computer-use tool directly; do not call darma cu>'
+darma cu --timeout-secs 90 '<bounded GUI task>'
 ```
 
 It runs Codex's computer-use plugin in that Mac's logged-in GUI session and works
-from Claude, Hermes, SSH or reduced-tool agents. It adds no authority or access.
-The worker uses its own native tools; never nest the fallback. Over SSH, use the
+from Claude, Hermes, SSH or reduced-tool agents. Tasks run one at a time per
+Mac, and darma appends a standing brief carrying section 3 to the worker, so
+don't repeat it. The queue covers `darma cu` callers only; on a screen other
+agents drive through `darma cu`, use it too rather than your native tool. Over SSH, use the
 target's `~/.local/bin/darma cu` with a safely quoted remote command; do not
 depend on its interactive PATH. `muavin cu` is retired; do not use it.
 
@@ -70,13 +95,12 @@ or is a Node launcher that fails under launchd's PATH, pass `--codex-bin
 a workaround or change the runtime. A run's logs are in the
 `$TMPDIR/darma-cu-<id>` it prints.
 
-Verify the actual window/result with the tool's returned state or screenshot.
-Report exact denied-access, locked-console or runtime errors. The native helper's
-app binding sometimes returns AppleEvent timeout `-1712`; retry once, then report
-it verbatim. A pipe, window or AppleEvent failure alone is not a permission
-diagnosis. Runtime repairs belong to their owning CLI/runbook and the task's
-existing authority. Preserve existing windows; close only your disposable tabs,
-keeping requested handoff windows open.
+Branch on its exit code: 0 done; 2 failed; 3 runtime fault (the helper's
+AppleEvent `-1712`, or a busy screen), so retry once later by state as in
+section 3; 4 needs a human, with the reason after `cu: needs a human:` on stderr, so message Deniz as
+in section 3. A pipe, window or AppleEvent failure alone is not a permission
+diagnosis. Verify the actual window/result from the worker's report. Preserve
+existing windows; close only your disposable tabs.
 
 Claude's tool discovery: [computer use](https://code.claude.com/docs/en/computer-use),
 [Chrome](https://code.claude.com/docs/en/chrome). Session tool documentation governs

@@ -38,7 +38,6 @@ refreshing a skill from its source.
 | `ponytail-gain` | ponytail plugin cache v4.8.4 on Rolly (skills/ponytail-gain) |  | 2026-08-20 |  |
 | `ponytail-help` | ponytail plugin cache v4.8.4 on Rolly (skills/ponytail-help) |  | 2026-08-20 |  |
 | `ponytail-review` | ponytail plugin cache v4.8.4 on Rolly (skills/ponytail-review) |  | 2026-08-20 |  |
-| `diligence` | fleet-local |  | 2026-09-16 | Automatically selected for systematic and infrastructure improvements; bounded by evidenced benefit and existing authority |
 | `human-readable` | fleet-local (already versioned in setup/skills before this manifest existed) |  | 2026-08-11 | local edit: explicit-only document style workflow; preserve invocation policy on upstream refresh |
 | `html-plan` | Mooney's local ~/.agents/skills/html-plan |  | 2026-08-20 | local edit: description now fires standalone on plan-for-Deniz requests (the old wording referenced a nonexistent 'html' router) |
 | `impeccable` | Mooney's local ~/.claude/skills/impeccable reconciled with ~/.agents/skills/impeccable |  | 2026-08-20 | canonical = the .claude copy (richer frontmatter, /command spelling) plus the agents/ dir that only the .agents copy had; internal path references self-correct via the skill's own <skill-base-dir> instruction |

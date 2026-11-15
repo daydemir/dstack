@@ -8,13 +8,13 @@ Instructions live in AGENTS.md files: this one for every session, a project's ho
 
 `darma whoami` shows this computer's role and project paths; `darma --help` covers setup, stack choices, sync and doctor. Linear: `darma task --help`. Slack: `darma msg --help`. Runtime credential sources, including direct 1Password `op` use via the service-account token (`op whoami` misreports it), are documented in darma-fleet's README. To reach another fleet machine or resolve a nickname, run `darma hosts`; prefer its T3 linked environment for an agent there, SSH for a command.
 
-Before choosing a subagent's model or effort, read the `choosing-models` skill. Browser or desktop UI work: open `computer-use-routing/SKILL.md` directly under your installed skills directory, following its symlink, for target, session and tool selection. Use `diligence` for infrastructure improvements.
+Before choosing a subagent's model or effort, read the `choosing-models` skill. Browser or desktop UI work: open `computer-use-routing/SKILL.md` directly under your installed skills directory, following its symlink, for target, session and tool selection.
 
 ## Coding principles
 
 When writing, changing, or reviewing code:
 
-DRY, functional, lean, clean, simple. Hard cuts, not band-aids. No fallbacks unless explicitly asked. Fail fast. Compile-time type safe. CLI-driven (core logic in CLIs, UI on top, use CLI to make sure everything works end to end with tests before building any UI). No loose strings. Minimize global mutable state, side effects, nil checks, force-unwraps. Changes should simplify, not complicate. Less code, while maintaining readability, is always better. Strict type safe enums for choices. When we stumble on a potential bug, root it out instead of stepping around it.
+DRY, functional, lean, clean, simple. Hard cuts, not band-aids. No fallbacks unless explicitly asked. Fail fast. Compile-time type safe. CLI-driven (core logic in CLIs, UI on top, use CLI to make sure everything works end to end with tests before building any UI). No loose strings. Minimize global mutable state, side effects, nil checks, force-unwraps. Changes should simplify, not complicate. Less code, while maintaining readability, is always better. Strict type safe enums for choices. When we stumble on a potential bug or recurring waste, root it out where it lives instead of stepping around it or adding a service, job or review step.
 
 ## Boundaries
 

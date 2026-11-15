@@ -31,6 +31,7 @@ DRY, functional, lean, clean, simple. Hard cuts, not band-aids. No fallbacks unl
 
 - Put disposable diffs, logs, downloads, renders, extracted archives, DBs and server state in session scratchpad or `$TMPDIR`; `darma storage` cleans it automatically when idle. Save anything needed later outside temp.
 - Make git worktrees at `~/Build/<project>/worktrees/<repo>-<task>`, never in temp.
-- Before handback, stop servers/browsers you started and delete your disposable state.
+- Before handback, stop every server, browser, emulator and background process you started, and delete your disposable state.
 - Before builds, simulators or large downloads, run `darma storage check`; on failure, clear your leftovers first or report.
+- Run heavy work (builds, test suites, emulators, benchmarks) as `darma run --slot -- <cmd>`; send benchmark and agent fan-out to the burst box `darma hosts` names.
 - Codex/Claude sessions and declared records idle >30 days move to the darma archive in R2 on opted-in machines: `darma archive search <words>` (`--machine all` on Mooney), `darma archive show <id>`, and `darma archive get <id>` to restore one to its original path before resuming it.

@@ -53,15 +53,16 @@ provider's T3 subscription account. It may run both panel members when the
 native interface cannot select the requested model; the panel must still contain
 two providers and two independent review contexts.
 
-Read `darma t3 run --help`. Pick the T3 instance (`codex`, `claudeAgent`) and a
-model its catalog offers; Fable only when the user explicitly chooses it. darma
+Read `darma t3 run --help`. Pick an account of that provider that `darma accounts`
+shows signed in (such as `codex-personal` or `claude-suelio`) and a model its
+catalog offers; Fable only when the user explicitly chooses it. darma
 is subscription-only and refuses API billing. A tool-free reviewer sees only its
 prompt, so write one prompt file outside the repo holding the whole bounded brief
 and the exact diff (`git diff <base>...<head>`), plus any file contents the review
 needs, then:
 
 ```sh
-darma t3 run --instance <codex|claudeAgent> --model <slug> --effort high \
+darma t3 run --instance <account> --model <slug> --effort high \
   --prompt <brief-and-diff-file> --workdir <repo> --timeout 1800
 ```
 

@@ -1,16 +1,35 @@
 ---
 name: council
-description: Get independent model reviews when the user requests a council.
+description: Get independent model reviews and ideas when the user requests a council.
 ---
 
 # Council
 
 Fix known issues and outstanding PR findings, then run the relevant checks before
-review. Give reviewers the updated diff and a bounded brief: the user's request word
-for word (including later corrections), your reading of it, exact head and
-base, checks, exclusions and open findings. Reviews are read-only. Ask
-reviewers to flag where your reading differs from the request, and to report
-any context they need but the brief lacks as a finding.
+review. Every reviewer gets the same updated diff and the same blind, bounded
+brief:
+
+- The user's request word for word, including later corrections, except any
+  council score target or approval bar: "until every reviewer scores 9.5"
+  becomes "until [score target withheld]". Product, performance and safety
+  targets stay in.
+- Your reading of the request, exact head and base, checks, exclusions and open
+  findings.
+- On a recheck, what changed and how each earlier finding was handled, stated as
+  facts.
+
+Blind means the brief holds no score, verdict or attribution from any reviewer
+or round, the reviewer's own included, and asks for no particular score. Point
+reviewers at the artifact and evidence, not at prior review threads or score
+records. Reviews are read-only; reviewers start no children and never watch the
+PR.
+
+Reviewers think freely. Invite each to challenge the premise, the approach and
+your reading, to propose deleting or replacing what you built, and to report
+context the brief lacks as a finding. The user's scope and permissions still
+govern what you implement. Ask for findings marked material or preference, a
+score out of 10 and an approve/request-changes verdict against the same task
+criteria each round.
 
 ## Select the panel
 
@@ -21,15 +40,12 @@ refresh it only after an error or an explicit provider change. Require
 reviewer. Known authentication or usage failures remain blockers even when the
 catalog advertises the model.
 
-Honor the user's named panel. Otherwise use two independent model providers,
-preferably an enabled GPT Sol and an enabled Claude model, at high effort. Two
-accounts or harnesses for the same model provider are not two independent
-providers. If the user requests more reviewers, choose only from the enabled
-catalog. Report the chosen public model names and provider instances.
-
-GPT-6 Astra is reserved for a user who explicitly chooses it as wargamer,
-grandmaster or final reviewer. Ordinary council and “latest/strongest model”
-selection use the enabled Sol/Claude panel; they do not select Astra.
+Read `choosing-models` before selecting the panel. Honor the user's named panel;
+otherwise select from its model group to fit what this work needs judged, using
+its cost and effort guidance. The panel needs at least two independent model
+providers; two accounts or harnesses for one provider are not two providers.
+Choose only models offered by the enabled catalog, and report the chosen public
+model names, efforts and provider instances.
 
 If a requested member or a second provider is unavailable, report the missing
 capability or exact auth/access failure. Do not silently substitute a model,
@@ -54,15 +70,14 @@ native interface cannot select the requested model; the panel must still contain
 two providers and two independent review contexts.
 
 Read `darma t3 run --help`. Pick an account of that provider that `darma accounts`
-shows signed in (such as `codex-personal` or `claude-suelio`) and a model its
-catalog offers; Fable only when the user explicitly chooses it. darma
-is subscription-only and refuses API billing. A tool-free reviewer sees only its
-prompt, so write one prompt file outside the repo holding the whole bounded brief
-and the exact diff (`git diff <base>...<head>`), plus any file contents the review
-needs, then:
+shows signed in (such as `codex-personal` or `claude-suelio`) and the selected
+model's slug from its catalog. darma is subscription-only and refuses API billing.
+A tool-free reviewer sees only its prompt, so write one prompt file outside the
+repo holding the whole bounded brief and the exact diff (`git diff
+<base>...<head>`), plus any file contents the review needs, then:
 
 ```sh
-darma t3 run --instance <account> --model <slug> --effort high \
+darma t3 run --instance <account> --model <slug> --effort <effort> \
   --prompt <brief-and-diff-file> --workdir <repo> --timeout 1800
 ```
 
@@ -75,14 +90,11 @@ If `darma t3 run`, the second provider's T3 instance or its subscription login i
 unavailable, say **“council blocked: second provider unavailable here”**, give
 the concrete reason, and stop the council. Keep independent authorized work
 moving. Leave T3, darma and logins as they are, and keep the panel to two real
-providers: the author's own assessment is not a member. Report the actual
-instances, models and providers used.
+providers: the author's own assessment is not a member.
 Other harnesses without a supported delegation route report the same gap and stop.
 
-Give each reviewer the same scoped material and ask for findings, a score out
-of 10 and an approve/request-changes verdict. Reviewers start no children and
-never watch the PR. Record the model and provider the harness reports; label
-unverified identity or missing scores rather than guessing.
+Record the model and provider the harness reports; label unverified identity
+or missing scores rather than guessing.
 
 Do not wait idle. When a result arrives, check its findings against the code
 at once and decide what to fix while the other reviewers run. Do not edit
@@ -91,17 +103,20 @@ instructions mark a reviewer as non-blocking, do not wait for it; treat a
 late result as feedback and do not record its score.
 
 Check findings against the actual code. Apply material fixes yourself, prove
-them, and request a fresh review of the changed head. Keep later rounds focused
-on changed behavior and unresolved findings. Decline unsupported scope expansion
-with evidence. Stop when the panel approves the reviewed head; budget exhaustion,
-missing replies and auth errors are not approval. The fleet contract and the
-user's scope still govern delivery and permissions.
+them, and request a fresh, blind review of the changed head. Keep later rounds
+focused on changed behavior and unresolved findings. Settle each preference on
+its merits; reopen it for new evidence, not a later reviewer's opposite taste.
+Decline unsupported scope expansion with evidence. Stop when all required reviewers approve the reviewed
+head and each score meets any target the user set; budget exhaustion, missing
+replies and auth errors are not approval. The fleet contract and the user's scope
+still govern delivery and permissions.
 
 ## Record the result
 
-Put the result in the PR description before its model/harness attribution, or
-in the final answer when there is no PR. Include round count, exact reviewed head,
-public model names, provider instances, scores and remaining findings. Use one
-column per round; write `no score` when none was supplied. Never post a duplicate
+When the council ends, put the result in the PR description before its
+model/harness attribution, or in the final answer when there is no PR.
+Include round count, exact reviewed head, public model names, provider instances,
+scores and remaining findings. Use one column per round; write `no score` when
+none was supplied. Never post a duplicate
 review-summary comment. Use `babysit-pr` for the delivery endpoint the user asked
 for, and verify the current head and checks again before merging.

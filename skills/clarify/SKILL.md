@@ -1,9 +1,9 @@
 ---
-name: formatting-messages
-description: Format a chat message so the reader's attention lands in the right order. Use when the user asks to format, restructure or make a message legible, or when a reply pairs an ask or deadline with a recommendation.
+name: clarify
+description: Use when the user asks for clearer formatting and style for communication with them.
 ---
 
-# Formatting messages
+# Clarify
 
 Order the message by what the reader must do first, and spend emphasis only where the eye should land. When restructuring an existing message, keep every fact, number, option, ask and hedge, and reword only where the structure needs it. Sentence style belongs to unslop and long documents to human-readable. This skill covers the shape of one message.
 

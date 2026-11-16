@@ -53,7 +53,7 @@ entry points live only under `skills/`; Darma installs those names once.
 | Skill | Fleet adaptation |
 |---|---|
 | `babysit-pr` | Upstream watcher and executable `scripts/pr-wait`; fleet/task delivery endpoint governs merging. |
-| `council` | Enabled-provider discovery, default two-provider panel, exact-head rechecks and reported identities; Astra only in explicitly selected special roles; briefs carry the user's request verbatim and treat missing context as a finding. |
+| `council` | Enabled-provider discovery; panel of at least two providers picked through `choosing-models`; blind briefs (score target withheld, no scores or attributions across reviewers or rounds) carrying the user's request verbatim; material-vs-preference findings; exact-head rechecks and reported identities. |
 | `file-pr` | Upstream concise PR workflow. |
 | `full-send` | Fleet/task authority stays intact; no permission/review bypass; plan review first when the fleet map requires it; verify merge and retire its task worktree. |
 | `full-stop` | Explicit-only metadata and workflow request; emphasis never activates it; preserves fleet boundaries and the unmerged endpoint. |

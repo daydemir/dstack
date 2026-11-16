@@ -5,16 +5,21 @@ description: Get independent model reviews and ideas when the user requests a co
 
 # Council
 
-Fix known issues and outstanding PR findings, then run the relevant checks before
-review. Every reviewer gets the same updated diff and the same blind, bounded
-brief:
+A council is either a code review or feedback on a plan, design or idea.
+
+Before a code review, fix known issues and outstanding PR findings, then run the
+relevant checks. When the user wants to discard the implementation and explore
+new ideas, skip fixes to code being replaced.
+
+Every reviewer gets the same material (the updated diff, or the plan or idea
+under discussion) and the same blind, bounded brief:
 
 - The user's request word for word, including later corrections, except any
   council score target or approval bar: "until every reviewer scores 9.5"
   becomes "until [score target withheld]". Product, performance and safety
   targets stay in.
-- Your reading of the request, exact head and base, checks, exclusions and open
-  findings.
+- Your reading of the request, checks, exclusions and open findings, plus the
+  exact head and base for a code review.
 - On a recheck, what changed and how each earlier finding was handled, stated as
   facts.
 
@@ -27,9 +32,10 @@ PR.
 Reviewers think freely. Invite each to challenge the premise, the approach and
 your reading, to propose deleting or replacing what you built, and to report
 context the brief lacks as a finding. The user's scope and permissions still
-govern what you implement. Ask for findings marked material or preference, a
-score out of 10 and an approve/request-changes verdict against the same task
-criteria each round.
+govern what you implement. Ask for findings marked material or preference. For
+a code review, also ask for a score out of 10 and an approve/request-changes
+verdict against the same task criteria each round. For feedback, ask each to
+make the case for what it recommends.
 
 ## Select the panel
 
@@ -106,17 +112,20 @@ Check findings against the actual code. Apply material fixes yourself, prove
 them, and request a fresh, blind review of the changed head. Keep later rounds
 focused on changed behavior and unresolved findings. Settle each preference on
 its merits; reopen it for new evidence, not a later reviewer's opposite taste.
-Decline unsupported scope expansion with evidence. Stop when all required reviewers approve the reviewed
-head and each score meets any target the user set; budget exhaustion, missing
-replies and auth errors are not approval. The fleet contract and the user's scope
-still govern delivery and permissions.
+Decline unsupported scope expansion with evidence. Stop when all required
+reviewers approve the reviewed head and each score meets any target the user
+set; budget exhaustion, missing replies and auth errors are not approval. The
+fleet contract and the user's scope still govern delivery and permissions.
 
 ## Record the result
 
-When the council ends, put the result in the PR description before its
-model/harness attribution, or in the final answer when there is no PR.
-Include round count, exact reviewed head, public model names, provider instances,
-scores and remaining findings. Use one column per round; write `no score` when
-none was supplied. Never post a duplicate
-review-summary comment. Use `babysit-pr` for the delivery endpoint the user asked
-for, and verify the current head and checks again before merging.
+For feedback, summarize the useful findings, disagreements and recommended next
+steps in the final answer, naming each member's model.
+
+When a code-review council ends, put the result in the PR description before
+its model/harness attribution, or in the final answer when there is no PR.
+Include round count, exact reviewed head, public model names, provider
+instances, scores and remaining findings. Use one column per round; write `no
+score` when none was supplied. Never post a duplicate review-summary comment.
+Use `babysit-pr` for the delivery endpoint the user asked for, and verify the
+current head and checks again before merging.

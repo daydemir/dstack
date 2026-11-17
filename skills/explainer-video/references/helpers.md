@@ -27,3 +27,21 @@ After muxing, check the actual MP4 too. AAC encoding can introduce peak overshoo
 This also compares final media duration with narration duration (0.5-second tolerance). The checker measures transcription agreement, peak level, and silence. It cannot judge naturalness, prosody, or whether the visuals teach well. The Heart 1.2x sample was approved by ear; a changed voice needs a listening sample before claiming the same quality.
 
 Upstream references: [Kokoro ONNX setup and model files](https://github.com/thewh1teagle/kokoro-onnx), [MLX Whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper). Dependencies and model weights stay outside this repository.
+
+Check layout at every sentence midpoint; it must report no errors or text-size warnings:
+
+```sh
+npx -y hyperframes@0.9.20 check --strict --at "$(python3 /absolute/path/to/explainer-video/scripts/midpoints.py /absolute/path/to/output/timing.json)" /absolute/path/to/project
+```
+
+Then make the review stills: one frame per sentence midpoint, contact sheets labelled with the second only, and `transcript.md` beside them.
+
+```sh
+"$HOME/.cache/explainer-video/venv/bin/python" /absolute/path/to/explainer-video/scripts/stills.py /absolute/path/to/final.mp4 /absolute/path/to/output/timing.json /absolute/path/to/stills
+```
+
+Then get a fresh-context critique. Pass `claude` or `codex`, whichever agent CLI you run under; it reads only the stills, your `ask.md` and the source directory, and needs no network beyond that agent.
+
+```sh
+"$HOME/.cache/explainer-video/venv/bin/python" /absolute/path/to/explainer-video/scripts/critic.py claude /absolute/path/to/stills /absolute/path/to/ask.md /absolute/path/to/source /absolute/path/to/critique.md
+```

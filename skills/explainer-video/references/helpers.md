@@ -34,13 +34,13 @@ Check layout at every sentence midpoint; it must report no errors or text-size w
 npx -y hyperframes@0.9.20 check --strict --at "$(python3 /absolute/path/to/explainer-video/scripts/midpoints.py /absolute/path/to/output/timing.json)" /absolute/path/to/project
 ```
 
-Then make the review stills: one frame per sentence midpoint, contact sheets labelled with the second only, and `transcript.md` beside them.
+Make review stills from the project (storyboard, before rendering) or from the rendered video: for each sentence a midpoint frame and a motion strip of three moments, contact sheets labelled with the second only, and `transcript.md`. Pass the project directory or the MP4 as the first argument.
 
 ```sh
-"$HOME/.cache/explainer-video/venv/bin/python" /absolute/path/to/explainer-video/scripts/stills.py /absolute/path/to/final.mp4 /absolute/path/to/output/timing.json /absolute/path/to/stills
+"$HOME/.cache/explainer-video/venv/bin/python" /absolute/path/to/explainer-video/scripts/stills.py /absolute/path/to/project-or-final.mp4 /absolute/path/to/output/timing.json /absolute/path/to/stills
 ```
 
-Then get a fresh-context critique. Pass `claude` or `codex`, whichever agent CLI you run under; it reads only the stills, your `ask.md` and the source directory, and needs no network beyond that agent.
+Then get a fresh-context critique. Pass `claude` or `codex`, whichever agent CLI you run under; it reads only the stills, your `ask.md` and the source directory, and needs no network beyond that agent. From the second review on, add the previous critique as a last argument so the reader marks each of its changes done or not.
 
 ```sh
 "$HOME/.cache/explainer-video/venv/bin/python" /absolute/path/to/explainer-video/scripts/critic.py claude /absolute/path/to/stills /absolute/path/to/ask.md /absolute/path/to/source /absolute/path/to/critique.md

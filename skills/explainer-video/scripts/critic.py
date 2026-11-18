@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Fresh-context critique of a rendered explainer.
 
-Usage: critic.py <claude|codex> <stills-dir> <ask.md> <source-dir> <critique.md>
+Usage: critic.py <claude|codex> <stills-dir> <ask.md> <source-dir> <critique.md> [previous-critique.md]
 
-Stages only the stills (from stills.py), the ask, the sources, critic.md and
-checks.md in a new temporary directory, runs the named agent CLI there
-read-only, and writes its reply to <critique.md>. Fails if the CLI fails.
+Stages only the stills (from stills.py), the ask, the sources, critic.md,
+checks.md and the previous critique, if given, in a new temporary directory,
+runs the named agent CLI there read-only, and writes its reply to
+<critique.md>. Fails if the CLI fails.
 """
 import shutil, subprocess, sys, tempfile
 from enum import Enum
@@ -32,6 +33,7 @@ def command(agent: Agent, frames: list[Path]) -> list[str]:
 def main():
     agent = Agent(sys.argv[1])
     stills, ask, source, out = (Path(a).resolve() for a in sys.argv[2:6])
+    previous = Path(sys.argv[6]).resolve() if len(sys.argv) > 6 else None
     with tempfile.TemporaryDirectory() as tmp:
         d = Path(tmp)
         shutil.copytree(stills, d / "stills")
@@ -39,7 +41,9 @@ def main():
         shutil.copytree(source, d / "source")
         for name in ("critic.md", "checks.md"):
             shutil.copy(REFS / name, d / name)
-        frames = sorted((d / "stills").glob("frame-*.png"))
+        if previous:
+            shutil.copy(previous, d / "previous.md")
+        frames = sorted((d / "stills").glob("frame-*.png")) + sorted((d / "stills").glob("motion-*.png"))
         if not frames:
             raise SystemExit(f"no frame-*.png in {stills}")
         result = subprocess.run(command(agent, frames), cwd=d, check=True, text=True,

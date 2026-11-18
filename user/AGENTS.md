@@ -6,7 +6,7 @@ Instructions live in AGENTS.md files: this one for every session, a project's ho
 
 ## Fleet
 
-`darma whoami` shows this computer's role and project paths; `darma --help` covers setup, stack choices, sync and doctor. Linear: `darma task --help`. Slack: `darma msg --help`. Threads, delegation, PR links and agents on other machines go through T3: its MCP tools, or its `t3` CLI (`t3 thread --help`) if a tool refuses; `darma t3` only runs headless completions. Runtime credential sources, including direct 1Password `op` use via the service-account token (`op whoami` misreports it), are documented in darma-fleet's README. To reach another fleet machine or resolve a nickname, run `darma hosts`; prefer its T3 linked environment for an agent there, SSH for a command.
+`darma whoami` shows this computer's role and project paths; `darma --help` covers setup, stack choices, sync and doctor. Linear: `darma task --help`. Slack: `darma msg --help`. Threads, delegation, PR links and agents on other machines go through T3's MCP tools; if a thread tool refuses, T3's `t3 thread` CLI lists, starts, sends and shows on this machine. `darma t3` only runs headless completions. Runtime credential sources, including direct 1Password `op` use via the service-account token (`op whoami` misreports it), are documented in darma-fleet's README. To reach another fleet machine or resolve a nickname, run `darma hosts`; prefer its T3 linked environment for an agent there, SSH for a command.
 
 Before choosing a subagent's model or effort, read the `choosing-models` skill. Browser or desktop UI work: open `computer-use-routing/SKILL.md` directly under your installed skills directory, following its symlink, for target, session and tool selection.
 

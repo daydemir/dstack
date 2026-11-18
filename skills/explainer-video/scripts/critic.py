@@ -26,7 +26,7 @@ def command(agent: Agent, frames: list[Path]) -> list[str]:
         return ["claude", "-p", "--model", "claude-opus-5-5", "--effort", "high",
                 "--allowedTools", "Read,Glob,Grep", "--", PROMPT]
     images = [arg for f in frames for arg in ("-i", str(f))]
-    return ["codex", "exec", "--skip-git-repo-check", "-s", "read-only", "-m", "gpt-6.1-sol",
+    return ["codex", "exec", "--skip-git-repo-check", "-s", "read-only", "-m", "gpt-6.2-sol",
             "-c", "model_reasoning_effort=high", *images, "-"]
 
 

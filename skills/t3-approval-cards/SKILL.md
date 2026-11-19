@@ -1,6 +1,6 @@
 ---
 name: t3-approval-cards
-description: "Shell commands in T3 Full access: two shapes stop the thread on an approval card nobody answers. Codex: no rm with -f/-rf/--force, even in a trap; use rm -r -- TARGET </dev/null. Claude: no zsh-only syntax like ${(k)M} and no code in Bash heredocs; write the file with Write, then run it."
+description: "Shell commands in T3 Full access: two shapes stop the thread on an approval card nobody answers. Codex: no rm with -f/-rf/--force, even in a trap; use rm -r with stdin from /dev/null. Claude: no zsh-only syntax like ${(k)M} and no code in Bash heredocs; write the file with Write, then run it."
 ---
 
 # T3 approval cards
@@ -43,7 +43,7 @@ a dangerous removal and asks, even for a command that deletes nothing.
   `${(k)M}` trip the check; bash-only forms such as `${!M[@]}` break under zsh.
 - Write code, associative-array loops and long file contents with the Write
   tool, then run the file (`bash path.sh`, `python3 path.py`). A large code
-  body in a heredoc (`cat > f <<'EOF'`, `python3 - <<'EOF'`) also trips the
+  body in a heredoc (`cat > f <<'EOF'`, `python3 - <<'EOF'`) can also trip the
   check; a short plain heredoc is fine.
 - If a command that deletes nothing still gets the card, send it again in
   plain syntax; Claude's own message allows that. A refused command that

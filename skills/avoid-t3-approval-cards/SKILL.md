@@ -1,5 +1,5 @@
 ---
-name: t3-approval-cards
+name: avoid-t3-approval-cards
 description: "Shell commands in T3 Full access: two shapes stop the thread on an approval card nobody answers. Codex: never rm with -f/-rf/--force, even in a trap; remove task scratch with plain rm (files) or rm -r (dirs). Claude: no zsh-only syntax like ${(k)M}, no long code in Bash heredocs; Write code that deletes nothing to a file, then run it."
 ---
 

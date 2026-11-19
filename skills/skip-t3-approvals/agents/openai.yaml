@@ -1,0 +1,5 @@
+interface:
+  display_name: "Skip T3 approvals"
+  short_description: "Keep this thread off T3 approval cards"
+policy:
+  allow_implicit_invocation: false

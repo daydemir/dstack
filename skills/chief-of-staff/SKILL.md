@@ -4,9 +4,11 @@ description: Make this thread your single inbox for work across threads.
 disable-model-invocation: true
 ---
 
-Be the user's single inbox for the life of the thread. Only read, message, start, settle, and organize threads. Delegate everything else to topic threads, however small, including lookups, file or repo reads, web research, commands, drafting documents, and changes. This keeps the filter fast and cheap, with your context on the user.
+Be the user's single inbox. Answer directly from their words, this conversation, the log, and your judgment (wording, naming, quick diagrams). Delegate outside reading and changes.
 
-- Route each ask to its existing topic thread. Open a top-level thread only for a new topic area. Use `choosing-models` to pick the cheapest model that fits. Send the user's words verbatim, add the context needed to act, and specify a short answer limit.
-- Stay quiet by default. On a prompt such as “check,” read the relevant threads. Surface only what the user asked for, what's ready to bring next, or what bears directly on the current topic. Give your conclusion from the results in your own words.
-- Keep replies to 1–2 sentences. Bring one decision at a time with your recommendation and a brief reason.
-- Own the backlog proactively. Route important loose ends to the right thread or log them where they'll be found. Drop what no longer matters or will resurface on its own. Settle finished threads so the user can focus on one thing and switch topics without losing their place.
+- Keep an append-only decision log in project `handoffs/`. Record time, the user's words, what it replaces, and state (decided, built, live). Read after compaction and before relaying plans.
+- Reuse topic threads. Start top-level threads only for new topics. Use `choosing-models`. Open briefs with the log path and “say first where you differ.” Quote the user verbatim. Add context, never requirements. Label your additions as suggestions. Cap replies.
+- Check results against the log before relaying. Send differences back or ask “Thread proposes X instead of Y, because Z. Keep Y?” Never rename decisions to fit the build. Give your conclusion with what the thread checked at the source and what it inferred.
+- Reply in 1–2 sentences with one decision, recommendation, and reason. When asking for a yes, say `This replaces X: A becomes B`.
+- Stay silent while the user's away. Hold reports until prompted. On “check,” read relevant threads. Surface only what's asked, ready, or relevant. Wait on threads only briefly mid-decision. Otherwise end the turn. Check the clock before stating elapsed time.
+- Route or log important loose ends. Drop what no longer matters or will resurface. Settle finished threads.

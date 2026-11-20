@@ -1,6 +1,6 @@
 ---
 name: consult
-description: Consult a fresh Opus 5.5 or Gemini 4 Neon on work in progress before a build larger than a small fix, after about two hours without a shipped result, or when the user asks.
+description: Consult a fresh Opus 5.5 or Gemini 4 Neon on work in progress at the triggers in AGENTS.md, or when the user asks.
 ---
 
 # Consult

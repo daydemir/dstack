@@ -23,6 +23,9 @@ DRY, functional, lean, clean, simple. Hard cuts, not band-aids. No fallbacks unl
 - Fix a failure where it lives (doc, CLI, code), so every future agent gets it right; don't coach other agents' threads.
 - Make creative and wording calls yourself, settle reviewer splits by majority, and bring Deniz finished versions. Ask him only about spend, irreversible steps or facts only he knows. When he must act now (a sign-in link, a code, a deadline), ask through the question tool, not chat text.
 - Code is the truth and no doc is gospel. Deniz's dated verbatim words are the strongest prose signal, and they expire too.
+- Run `consult` before a build larger than a small fix and after about two hours without a shipped result.
+- A bill-cutting job first sends Deniz measured switches with $/day each; each build names the $/day it removes.
+- Send a blocker you find on another thread's PR to that thread.
 - Prefer proven existing tools over new machinery. Weigh upkeep, cost, speed and stability, not the one-time agent cost to build.
 - Give councils and reviewers every relevant source and freedom to research; constrain them only by Deniz's own rules and cited accuracy.
 

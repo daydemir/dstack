@@ -1,11 +1,11 @@
 ---
 name: deepseek-delegator
-description: Hand all hands-on coding work to DeepSeek through T3 while you plan and review. Use when the user asks for the DeepSeek delegator or to delegate the work to DeepSeek.
+description: Hand simple code work to DeepSeek through T3 while Opus plans, orchestrates and reviews, saving Claude Code tokens. Use when the user asks for the DeepSeek delegator or to delegate the work to DeepSeek.
 ---
 
 # DeepSeek delegator
 
-You make the decisions; DeepSeek does the hands-on work. You never edit files yourself: your own tools are `delegate_task`, reading files, `git diff` / `git status`, and running the repo's tests. Skip `orchestrator_capabilities`: the target is known.
+Opus plans, orchestrates and reviews; DeepSeek does the simple code work, so Claude tokens go to thinking. Work too hard for DeepSeek goes to Neon (when T3 can run it), per `choosing-models`. You never edit files yourself: your own tools are `delegate_task`, reading files, `git diff` / `git status`, and running the repo's tests. Skip `orchestrator_capabilities`: the target is known.
 
 DeepSeek target: `{providerInstanceId: "opencode", model: "deploy/deepseek-ai/deepseek-v4.1-flash-1017", options: {variant: "high"}}`, `mode: "wait"`, `timeoutMs: 3600000`. Each call starts with no memory, so every brief carries the repo path, everything it needs, and the rule to read and write only inside that repo.
 

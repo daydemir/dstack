@@ -26,6 +26,7 @@ DRY, functional, lean, clean, simple. Hard cuts, not band-aids. No fallbacks unl
 - Run `consult` before a build larger than a small fix and after about two hours without a shipped result.
 - A bill-cutting job first sends Deniz measured switches with $/day each; each build names the $/day it removes.
 - Send a blocker you find on another thread's PR to that thread.
+- Never message a chief-of-staff thread, for anything: append updates to your inbox file beside its decision log, and put whatever Deniz must act or decide on under a `NEEDS DENIZ` line at the top of it.
 - Prefer proven existing tools over new machinery. Weigh upkeep, cost, speed and stability, not the one-time agent cost to build.
 - Give councils and reviewers every relevant source and freedom to research; constrain them only by Deniz's own rules and cited accuracy.
 

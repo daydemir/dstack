@@ -7,4 +7,4 @@ Own one goal that can be finished, from "fetch some info" to "release the new ap
 
 Log to `inbox/<your thread>.md` beside the chief of staff's decision log (project `handoffs/`; its top links the chief-of-staff thread). Put what the user must do or decide under a `NEEDS DENIZ` line at the top. Never message the chief of staff.
 
-When the user is done with you, send them back to the chief-of-staff thread (link). When the goal lands, say so, tidy up with `thread-manager`, and stop.
+When the user is done with you, send them back to the chief-of-staff thread (link). When the goal lands, say so, settle your thread (`thread-manager`), and stop.

@@ -10,6 +10,8 @@ Harness memory is off; darma sets that. Put a durable rule or fact in the AGENTS
 
 `darma whoami` shows this computer's role and project paths; `darma --help` covers setup, stack choices, sync and doctor. Linear: `darma task --help`. Slack: `darma msg --help`. Threads, delegation, PR links and agents on other machines go through T3's MCP tools; if a thread tool is missing or errors (never to get around a denial), T3's `t3 thread` CLI lists, starts, sends and shows threads on this machine. `darma t3` only runs headless completions. Runtime credential sources, including direct 1Password `op` use via the service-account token (`op whoami` misreports it), are documented in darma-fleet's README. To reach another fleet machine or resolve a nickname, run `darma hosts`; prefer its T3 linked environment for an agent there, SSH for a command.
 
+End a turn only on work whose end wakes you. Start a build, test run or Sunny job that outlives your turn as `darma run --wake [--slot] -- CMD`; its exit, pass or fail, messages your thread. In Claude Code, a background Bash with `t3_background_wait` also works. Hand work you will wait on to a `delegate_task` child, whose completion wakes you. A top-level thread wakes you only when its prompt tells it to `t3_thread_send` you its result. Wait in the foreground for everything else. As a delegated child, always wait in the foreground, because your parent is waiting on your final answer.
+
 Before choosing a subagent's model or effort, read the `choosing-models` skill. Browser or desktop UI work: open `computer-use-routing/SKILL.md` directly under your installed skills directory, following its symlink, for target, session and tool selection.
 
 ## Coding principles
